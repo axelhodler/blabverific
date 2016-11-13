@@ -7,7 +7,6 @@ import {
 import {FormsModule} from "@angular/forms";
 import {AppComponentPageObject} from "./app.component.pageobject";
 import {EthereumGateway} from "./ethereumgateway";
-import {By} from "@angular/platform-browser";
 
 describe('AppComponent', function () {
   let pageObject: AppComponentPageObject;
@@ -33,12 +32,6 @@ describe('AppComponent', function () {
     fixture.detectChanges();
   });
 
-  it('holds an input field to enter a report', () => {
-    pageObject.insertReportContent('my report');
-
-    expect(pageObject.hashedReport()).toBe('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
-  });
-
   it('displays the hashed report', () => {
     pageObject.insertReportContent('another report');
 
@@ -48,7 +41,7 @@ describe('AppComponent', function () {
   it('submits the hash of the entered report', () => {
     pageObject.insertReportContent('my report');
 
-    fixture.debugElement.query(By.css('#submit-report')).nativeElement.click();
+    pageObject.clickSubmitReport();
 
     expect(ethereumGatewaySpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
   })

@@ -20,4 +20,8 @@ export class AppComponentPageObject {
     this.reportContent().dispatchEvent(new Event('input'));
     this.contents.detectChanges();
   }
+
+  clickSubmitReport() {
+    this.contents.debugElement.query(By.css('#submit-report')).nativeElement.click();
+  }
 }
