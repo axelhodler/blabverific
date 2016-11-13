@@ -1,7 +1,19 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {EthereumGateway} from "./ethereumgateway";
 
 @Component({
-    selector: 'my-app',
-    template: `<p id="report-hashed">0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc</p><input id="report-content">`
+  selector: 'my-app',
+  template: `
+<p id="report-hashed">{{reportHash}}</p>
+<input id="report-content" [(ngModel)]="report" (ngModelChange)="updateReportHash()">`
 })
-export class AppComponent { }
+export class AppComponent {
+  @Input()
+  report: string;
+  reportHash: string;
+
+  updateReportHash() {
+    var ethereumGateway = new EthereumGateway();
+    this.reportHash = ethereumGateway.hash(this.report);
+  }
+}
