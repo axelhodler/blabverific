@@ -10,4 +10,13 @@ export class AppComponentPageObject {
     return this.contents.debugElement.query(By.css('#report-content')).nativeElement;
   }
 
+  hashedReport() {
+    return this.contents.debugElement.query(By.css('#report-hashed')).nativeElement.textContent;
+  }
+
+  insertReportContent(content: string) {
+    this.reportContent().value = content;
+    this.reportContent().dispatchEvent(new Event('input'));
+    this.contents.detectChanges();
+  }
 }
