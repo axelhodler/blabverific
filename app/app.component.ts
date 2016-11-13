@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {EthereumGateway} from "./ethereumgateway";
+import {Hashing} from "./hashing";
 
 @Component({
   selector: 'my-app',
@@ -10,14 +10,16 @@ import {EthereumGateway} from "./ethereumgateway";
 export class AppComponent {
   @Input()
   report: string;
+
   reportHash: string;
-  ethereumGateway: EthereumGateway;
+
+  hashing: Hashing;
 
   constructor() {
-    this.ethereumGateway = new EthereumGateway();
+    this.hashing = new Hashing();
   }
 
   updateReportHash() {
-    this.reportHash = this.ethereumGateway.hash(this.report);
+    this.reportHash = this.hashing.sha3(this.report);
   }
 }

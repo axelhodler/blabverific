@@ -1,5 +1,6 @@
 import {AppComponent} from './app.component';
 import {By}           from '@angular/platform-browser';
+import {ComponentFixture} from '@angular/core/testing';
 
 export class AppComponentPageObject {
 
