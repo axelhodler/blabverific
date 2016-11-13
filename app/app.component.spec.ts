@@ -29,7 +29,7 @@ describe('AppComponent', function () {
     pageObject = new AppComponentPageObject(fixture);
     comp = fixture.componentInstance;
     ethereumGatewaySpy = fixture.debugElement.injector.get(EthereumGateway);
-    spyOn(ethereumGatewaySpy, 'hi');
+    spyOn(ethereumGatewaySpy, 'submitReport');
     fixture.detectChanges();
   });
 
@@ -45,9 +45,11 @@ describe('AppComponent', function () {
     expect(pageObject.hashedReport()).toBe('0x5917c10d9344319535b34bb5b24b1df303f6fdd691c74ea5f0f66cb1f19f07af');
   });
 
-  it('creates persists the report', () => {
+  it('submits the hash of the entered report', () => {
+    pageObject.insertReportContent('my report');
+
     fixture.debugElement.query(By.css('#submit-report')).nativeElement.click();
 
-    expect(ethereumGatewaySpy.hi).toHaveBeenCalled();
+    expect(ethereumGatewaySpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
   })
 });

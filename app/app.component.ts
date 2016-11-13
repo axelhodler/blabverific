@@ -7,7 +7,7 @@ import {EthereumGateway} from "./ethereumgateway";
   template: `
 <p id="report-hashed">{{reportHash}}</p>
 <input id="report-content" placeholder="Describe what you did" [(ngModel)]="report" (ngModelChange)="updateReportHash()">
-<button id="submit-report" (click)="yolo()">click me</button>`,
+<button id="submit-report" (click)="submitReport()">Submit Report</button>`,
   providers: [EthereumGateway]
 })
 export class AppComponent {
@@ -26,7 +26,7 @@ export class AppComponent {
     this.reportHash = this.hashing.sha3(this.report);
   }
 
-  yolo() {
-    this.ethereumGateway.hi();
+  submitReport() {
+    this.ethereumGateway.submitReport(this.reportHash);
   }
 }
