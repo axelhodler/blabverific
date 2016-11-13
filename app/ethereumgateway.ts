@@ -8,4 +8,7 @@ export class EthereumGateway {
   verifyReport() {
 
   }
+
+  findReport(hash: string) {
+  }
 }
