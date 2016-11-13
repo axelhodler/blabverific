@@ -6,16 +6,20 @@ import {
 } from '@angular/core/testing';
 import {FormsModule} from "@angular/forms";
 import {AppComponentPageObject} from "./app.component.pageobject";
+import {EthereumGateway} from "./ethereumgateway";
+import {By} from "@angular/platform-browser";
 
 describe('AppComponent', function () {
   let pageObject: AppComponentPageObject;
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let ethereumGatewaySpy: EthereumGateway;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AppComponent]
+      declarations: [AppComponent],
+      providers: [EthereumGateway]
     })
       .compileComponents();
   }));
@@ -24,6 +28,8 @@ describe('AppComponent', function () {
     fixture = TestBed.createComponent(AppComponent);
     pageObject = new AppComponentPageObject(fixture);
     comp = fixture.componentInstance;
+    ethereumGatewaySpy = fixture.debugElement.injector.get(EthereumGateway);
+    spyOn(ethereumGatewaySpy, 'hi');
     fixture.detectChanges();
   });
 
@@ -38,4 +44,10 @@ describe('AppComponent', function () {
 
     expect(pageObject.hashedReport()).toBe('0x5917c10d9344319535b34bb5b24b1df303f6fdd691c74ea5f0f66cb1f19f07af');
   });
+
+  it('creates persists the report', () => {
+    fixture.debugElement.query(By.css('#submit-report')).nativeElement.click();
+
+    expect(ethereumGatewaySpy.hi).toHaveBeenCalled();
+  })
 });
