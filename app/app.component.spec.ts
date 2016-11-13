@@ -7,9 +7,10 @@ import {
 import {DebugElement} from '@angular/core';
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
+import {AppComponentPageObject} from "./app.component.pageobject";
 
 describe('AppComponent', function () {
-  let de: DebugElement;
+  let pageObject: AppComponentPageObject;
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
@@ -23,12 +24,13 @@ describe('AppComponent', function () {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
+    pageObject = new AppComponentPageObject(fixture);
     comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('holds an input field to enter a report', () => {
-    var reportContentInputField = fixture.debugElement.query(By.css('#report-content')).nativeElement;
+    var reportContentInputField = pageObject.reportContent();
     var reportHash = fixture.debugElement.query(By.css('#report-hashed')).nativeElement;
 
     reportContentInputField.value = 'my report';
@@ -39,7 +41,7 @@ describe('AppComponent', function () {
   });
 
   it('displays the hashed report', () => {
-    var reportContentInputField = fixture.debugElement.query(By.css('#report-content')).nativeElement;
+    var reportContentInputField = pageObject.reportContent();
     var reportHash = fixture.debugElement.query(By.css('#report-hashed')).nativeElement;
 
     reportContentInputField.value = 'another report';
