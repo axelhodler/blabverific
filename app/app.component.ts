@@ -11,9 +11,13 @@ export class AppComponent {
   @Input()
   report: string;
   reportHash: string;
+  ethereumGateway: EthereumGateway;
+
+  constructor() {
+    this.ethereumGateway = new EthereumGateway();
+  }
 
   updateReportHash() {
-    var ethereumGateway = new EthereumGateway();
-    this.reportHash = ethereumGateway.hash(this.report);
+    this.reportHash = this.ethereumGateway.hash(this.report);
   }
 }
