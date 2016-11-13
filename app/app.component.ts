@@ -3,11 +3,9 @@ import {Hashing} from "./hashing";
 import {EthereumGateway} from "./ethereumgateway";
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
-  template: `
-<p id="report-hashed">{{reportHash}}</p>
-<input id="report-content" placeholder="Describe what you did" [(ngModel)]="report" (ngModelChange)="updateReportHash()">
-<button id="submit-report" (click)="submitReport()">Submit Report</button>`,
+  templateUrl: 'app.component.html',
   providers: [EthereumGateway]
 })
 export class AppComponent {

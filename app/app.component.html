@@ -1,0 +1,9 @@
+<p id="report-hashed">{{reportHash}}</p>
+<input id="report-content"
+       placeholder="Describe what you did"
+       [(ngModel)]="report"
+       (ngModelChange)="updateReportHash()">
+<button id="submit-report"
+        (click)="submitReport()">
+  Submit Report
+</button>
