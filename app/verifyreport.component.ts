@@ -4,10 +4,7 @@ import {EthereumGateway} from "./ethereumgateway";
 @Component({
   moduleId: module.id,
   selector: 'verify-report',
-  template: '<button id="verify-report"' +
-  '(click)="verifyReport()">Verify Report</button>' +
-  '<input id="report-id" [(ngModel)]="reportId">' +
-  '<button id="find-report" (click)="findReport()">Find Report</button>',
+  templateUrl: 'verifyreport.component.html',
   providers: [EthereumGateway]
 })
 export class VerifyReport {
