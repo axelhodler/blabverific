@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule }   from '@angular/forms';
-import { AppComponent }  from './app.component';
+import { SubmitReportComponent }  from './submitreport.component';
 import {VerifyReport} from "./verifyreport.component";
 
 @NgModule({
@@ -9,7 +9,7 @@ import {VerifyReport} from "./verifyreport.component";
     BrowserModule,
     FormsModule
   ],
-  declarations: [ AppComponent, VerifyReport ],
-  bootstrap:    [ AppComponent ]
+  declarations: [ SubmitReportComponent, VerifyReport ],
+  bootstrap:    [ SubmitReportComponent ]
 })
 export class AppModule { }

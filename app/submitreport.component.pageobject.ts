@@ -1,10 +1,10 @@
-import {AppComponent} from './app.component';
+import {SubmitReportComponent} from './submitreport.component';
 import {By}           from '@angular/platform-browser';
 import {ComponentFixture} from '@angular/core/testing';
 
-export class AppComponentPageObject {
+export class SubmitReportPageObject {
 
-  constructor(private contents: ComponentFixture<AppComponent>) {
+  constructor(private contents: ComponentFixture<SubmitReportComponent>) {
   }
 
   reportContent() {

@@ -4,11 +4,11 @@ import {EthereumGateway} from "./ethereumgateway";
 
 @Component({
   moduleId: module.id,
-  selector: 'my-app',
-  templateUrl: 'app.component.html',
+  selector: 'submit-report',
+  templateUrl: 'submitreport.component.html',
   providers: [EthereumGateway]
 })
-export class AppComponent {
+export class SubmitReportComponent {
   @Input()
   report: string;
 

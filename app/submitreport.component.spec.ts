@@ -1,30 +1,30 @@
-import {AppComponent} from './app.component';
+import {SubmitReportComponent} from './submitreport.component';
 
 import {
   async, ComponentFixture, TestBed
 } from '@angular/core/testing';
 import {FormsModule} from "@angular/forms";
-import {AppComponentPageObject} from "./app.component.pageobject";
+import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {EthereumGateway} from "./ethereumgateway";
 
 describe('AppComponent', function () {
-  let pageObject: AppComponentPageObject;
-  let comp: AppComponent;
-  let fixture: ComponentFixture<AppComponent>;
+  let pageObject: SubmitReportPageObject;
+  let comp: SubmitReportComponent;
+  let fixture: ComponentFixture<SubmitReportComponent>;
   let ethereumGatewaySpy: EthereumGateway;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
-      declarations: [AppComponent],
+      declarations: [SubmitReportComponent],
       providers: [EthereumGateway]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AppComponent);
-    pageObject = new AppComponentPageObject(fixture);
+    fixture = TestBed.createComponent(SubmitReportComponent);
+    pageObject = new SubmitReportPageObject(fixture);
     comp = fixture.componentInstance;
     ethereumGatewaySpy = fixture.debugElement.injector.get(EthereumGateway);
     spyOn(ethereumGatewaySpy, 'submitReport');
