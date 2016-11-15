@@ -4,13 +4,7 @@ import {Injectable} from "@angular/core";
 export class Contract {
   contract: any;
 
-  // swallows errors!
   submitReport(hash: string) {
-    return new Promise((resolve) => {
-      this.contract.verify(hash, () => {
-        resolve();
-      });
-    });
   }
 
   verifyReport() {
