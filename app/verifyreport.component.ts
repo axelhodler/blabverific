@@ -1,25 +1,25 @@
 import {Component, Input} from "@angular/core";
-import {EthereumGateway} from "./ethereumgateway";
+import {Contract} from "./contract";
 
 @Component({
   moduleId: module.id,
   selector: 'verify-report',
   templateUrl: 'verifyreport.component.html',
-  providers: [EthereumGateway]
+  providers: [Contract]
 })
 export class VerifyReport {
 
   @Input()
   reportId: string;
 
-  constructor(private ethereumGateway: EthereumGateway) {
+  constructor(private contract: Contract) {
   }
 
   verifyReport() {
-    this.ethereumGateway.verifyReport();
+    this.contract.verifyReport();
   }
 
   findReport() {
-    this.ethereumGateway.findReport(this.reportId);
+    this.contract.findReport(this.reportId);
   }
 }

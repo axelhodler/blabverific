@@ -2,20 +2,20 @@ import {
   async, TestBed, ComponentFixture
 } from '@angular/core/testing';
 import {VerifyReport} from "./verifyreport.component";
-import {EthereumGateway} from "./ethereumgateway";
+import {Contract} from "./contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 
 describe('VerifyReport', function () {
   let comp: VerifyReport;
   let fixture: ComponentFixture<VerifyReport>;
-  let ethereumGatewaySpy: EthereumGateway;
+  let contractSpy: Contract;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [VerifyReport],
-      providers: [EthereumGateway]
+      providers: [Contract]
     })
       .compileComponents();
   }));
@@ -23,16 +23,16 @@ describe('VerifyReport', function () {
   beforeEach(() => {
     fixture = TestBed.createComponent(VerifyReport);
     comp = fixture.componentInstance;
-    ethereumGatewaySpy = fixture.debugElement.injector.get(EthereumGateway);
-    spyOn(ethereumGatewaySpy, 'verifyReport');
-    spyOn(ethereumGatewaySpy, 'findReport');
+    contractSpy = fixture.debugElement.injector.get(Contract);
+    spyOn(contractSpy, 'verifyReport');
+    spyOn(contractSpy, 'findReport');
     fixture.detectChanges();
   });
 
   it('verifies a report on clicking the verify report button', () => {
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
-    expect(ethereumGatewaySpy.verifyReport).toHaveBeenCalled();
+    expect(contractSpy.verifyReport).toHaveBeenCalled();
   });
 
   it('can find reports by id', () => {
@@ -42,6 +42,6 @@ describe('VerifyReport', function () {
     fixture.debugElement.query(By.css('#find-report')).nativeElement.click();
     fixture.detectChanges();
 
-    expect(ethereumGatewaySpy.findReport).toHaveBeenCalledWith('reportId');
+    expect(contractSpy.findReport).toHaveBeenCalledWith('reportId');
   });
 });

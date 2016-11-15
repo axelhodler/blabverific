@@ -5,19 +5,19 @@ import {
 } from '@angular/core/testing';
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
-import {EthereumGateway} from "./ethereumgateway";
+import {Contract} from "./contract";
 
 describe('AppComponent', function () {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;
-  let ethereumGatewaySpy: EthereumGateway;
+  let contractSpy: Contract;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [SubmitReportComponent],
-      providers: [EthereumGateway]
+      providers: [Contract]
     })
       .compileComponents();
   }));
@@ -26,8 +26,8 @@ describe('AppComponent', function () {
     fixture = TestBed.createComponent(SubmitReportComponent);
     pageObject = new SubmitReportPageObject(fixture);
     comp = fixture.componentInstance;
-    ethereumGatewaySpy = fixture.debugElement.injector.get(EthereumGateway);
-    spyOn(ethereumGatewaySpy, 'submitReport');
+    contractSpy = fixture.debugElement.injector.get(Contract);
+    spyOn(contractSpy, 'submitReport');
     fixture.detectChanges();
   });
 
@@ -42,6 +42,6 @@ describe('AppComponent', function () {
 
     pageObject.clickSubmitReport();
 
-    expect(ethereumGatewaySpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
+    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
   })
 });

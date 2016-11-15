@@ -1,12 +1,12 @@
 import {Component, Input} from '@angular/core';
 import {Hashing} from "./hashing";
-import {EthereumGateway} from "./ethereumgateway";
+import {Contract} from "./contract";
 
 @Component({
   moduleId: module.id,
   selector: 'submit-report',
   templateUrl: 'submitreport.component.html',
-  providers: [EthereumGateway]
+  providers: [Contract]
 })
 export class SubmitReportComponent {
   @Input()
@@ -16,7 +16,7 @@ export class SubmitReportComponent {
 
   hashing: Hashing;
 
-  constructor(private ethereumGateway: EthereumGateway) {
+  constructor(private contract: Contract) {
     this.hashing = new Hashing();
   }
 
@@ -25,6 +25,6 @@ export class SubmitReportComponent {
   }
 
   submitReport() {
-    this.ethereumGateway.submitReport(this.reportHash);
+    this.contract.submitReport(this.reportHash);
   }
 }
