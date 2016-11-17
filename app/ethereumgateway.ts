@@ -6,8 +6,9 @@ declare var Web3: any;
 export class EthereumGateway {
   contract: any;
 
-  constructor(private config: Config) {
-    // SMELL logic in ctor
+  constructor(private config: Config) {}
+
+  connectToContract() {
     let web3 = new Web3();
     web3.setProvider(this.config.CONTRACT_PROVIDER);
     this.contract = web3.eth.contract(this.config.CONTRACT_ABI).at(this.config.CONTRACT_ADDRESS);

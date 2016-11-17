@@ -1,8 +1,10 @@
 import {Injectable} from "@angular/core";
+import {EthereumGateway} from "./ethereumgateway";
 
 @Injectable()
 export class Contract {
-  contract: any;
+  constructor(private ethereumGatway: EthereumGateway) {
+  }
 
   submitReport(hash: string) {
   }
@@ -12,5 +14,6 @@ export class Contract {
   }
 
   findReport(hash: string) {
+    return this.ethereumGatway.contract.isValid.call(hash);
   }
 }

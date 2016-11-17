@@ -5,6 +5,8 @@ import {VerifyReport} from "./verifyreport.component";
 import {Contract} from "./contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
+import {EthereumGateway} from "./ethereumgateway";
+import {Config} from "./config";
 
 describe('VerifyReport', function () {
   let comp: VerifyReport;
@@ -15,7 +17,7 @@ describe('VerifyReport', function () {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [VerifyReport],
-      providers: [Contract]
+      providers: [Contract, EthereumGateway, Config]
     })
       .compileComponents();
   }));
