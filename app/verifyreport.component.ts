@@ -19,7 +19,7 @@ export class VerifyReport {
     this.contract.verifyReport();
   }
 
-  findReport() {
-    this.contract.findReport(this.reportId);
+  isReportValid() {
+    this.contract.isReportValid(this.reportId);
   }
 }

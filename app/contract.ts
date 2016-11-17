@@ -13,7 +13,7 @@ export class Contract {
 
   }
 
-  findReport(hash: string) {
+  isReportValid(hash: string) {
     return this.ethereumGatway.contract.isValid.call(hash);
   }
 }

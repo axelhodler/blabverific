@@ -27,7 +27,7 @@ describe('VerifyReport', function () {
     comp = fixture.componentInstance;
     contractSpy = fixture.debugElement.injector.get(Contract);
     spyOn(contractSpy, 'verifyReport');
-    spyOn(contractSpy, 'findReport');
+    spyOn(contractSpy, 'isReportValid');
     fixture.detectChanges();
   });
 
@@ -44,6 +44,6 @@ describe('VerifyReport', function () {
     fixture.debugElement.query(By.css('#find-report')).nativeElement.click();
     fixture.detectChanges();
 
-    expect(contractSpy.findReport).toHaveBeenCalledWith('reportId');
+    expect(contractSpy.isReportValid).toHaveBeenCalledWith('reportId');
   });
 });

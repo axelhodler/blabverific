@@ -15,6 +15,6 @@ describe('Contract', () => {
 
     let contract = new Contract(ethereumGatewayStub as EthereumGateway);
 
-    expect(contract.findReport('reportId')).toBe(false);
+    expect(contract.isReportValid('reportId')).toBe(false);
   })
 });
