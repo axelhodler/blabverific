@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {EthereumGateway} from "./ethereumgateway";
+import {EthereumGateway} from "./boundaries/ethereumgateway";
 
 @Injectable()
 export class Contract {

@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Config} from "./config";
+import {Config} from "../config";
 declare var Web3: any;
 
 @Injectable()

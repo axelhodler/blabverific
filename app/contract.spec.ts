@@ -1,5 +1,5 @@
 import {Contract} from "./contract";
-import {EthereumGateway} from "./ethereumgateway";
+import {EthereumGateway} from "./boundaries/ethereumgateway";
 
 describe('Contract', () => {
   it('delegates find report to contract', () => {

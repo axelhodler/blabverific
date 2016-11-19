@@ -3,7 +3,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule}   from '@angular/forms';
 import {SubmitReportComponent}  from './submitreport.component';
 import {VerifyReport} from "./verifyreport.component";
-import {EthereumGateway} from "./ethereumgateway";
+import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {AppComponent} from "./app.component";
 import {Config} from "./config";
 

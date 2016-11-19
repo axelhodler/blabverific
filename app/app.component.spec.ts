@@ -4,7 +4,7 @@ import {AppComponent} from "./app.component";
 import {VerifyReport} from "./verifyreport.component";
 import {FormsModule} from "@angular/forms";
 import {Config} from "./config";
-import {EthereumGateway} from "./ethereumgateway";
+import {EthereumGateway} from "./boundaries/ethereumgateway";
 
 describe('AppComponent', function () {
   let comp: AppComponent;

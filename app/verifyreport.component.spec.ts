@@ -5,7 +5,7 @@ import {VerifyReport} from "./verifyreport.component";
 import {Contract} from "./contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import {EthereumGateway} from "./ethereumgateway";
+import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {Config} from "./config";
 
 describe('VerifyReport', function () {
