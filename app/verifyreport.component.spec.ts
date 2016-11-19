@@ -2,7 +2,7 @@ import {
   async, TestBed, ComponentFixture
 } from '@angular/core/testing';
 import {VerifyReport} from "./verifyreport.component";
-import {Contract} from "./contract";
+import {Contract} from "./boundaries/contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
