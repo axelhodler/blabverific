@@ -8,7 +8,7 @@ import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "./contract";
 import {Config} from "./config";
 
-describe('AppComponent', function () {
+describe('SubmitReportComponent', function () {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;
