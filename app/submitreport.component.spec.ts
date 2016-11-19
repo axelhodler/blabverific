@@ -6,6 +6,7 @@ import {
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "./contract";
+import {Config} from "./config";
 
 describe('AppComponent', function () {
   let pageObject: SubmitReportPageObject;
@@ -17,7 +18,7 @@ describe('AppComponent', function () {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [SubmitReportComponent],
-      providers: [Contract]
+      providers: [Contract, Config]
     })
       .compileComponents();
   }));

@@ -8,7 +8,7 @@ import {Config} from "./config";
   moduleId: module.id,
   selector: 'submit-report',
   templateUrl: 'submitreport.component.html',
-  providers: [Contract, EthereumGateway, Config]
+  providers: [Contract, EthereumGateway]
 })
 export class SubmitReportComponent {
   @Input()
