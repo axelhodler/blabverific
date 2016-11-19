@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Hashing} from "./hashing";
+import {Hashing} from "./boundaries/hashing";
 import {Contract} from "./contract";
 import {EthereumGateway} from "./ethereumgateway";
 import {Config} from "./config";
