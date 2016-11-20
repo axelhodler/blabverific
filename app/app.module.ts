@@ -6,6 +6,7 @@ import {VerifyReport} from "./verifyreport.component";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {AppComponent} from "./app.component";
 import {Config} from "./config";
+import {Contract} from "./boundaries/contract";
 
 @NgModule({
   imports: [
@@ -14,7 +15,7 @@ import {Config} from "./config";
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, Config]
+  providers: [EthereumGateway, Contract, Config]
 })
 export class AppModule {
 }
