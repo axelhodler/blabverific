@@ -14,4 +14,5 @@ sed -i '' 's#_CONTRACT_ADDRESS_#'$ADDRESS'#g' app/config.ts
 ABI=${CONFIG_CONTENTS_ARRAY[2]}
 sed -i '' 's#_CONTRACT_ABI_#'$ABI'#g' app/config.ts
 
-lsof -t -i:8545 | xargs kill
+trap "lsof -t -i:8545 | xargs kill && git checkout app/config.ts" SIGINT
+npm start
