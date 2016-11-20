@@ -4,13 +4,18 @@ declare var Web3: any;
 
 @Injectable()
 export class EthereumGateway {
+  web3: any;
   contract: any;
 
   constructor(private config: Config) {}
 
   connectToContract() {
-    let web3 = new Web3();
-    web3.setProvider(new web3.providers.HttpProvider(this.config.CONTRACT_PROVIDER));
-    this.contract = web3.eth.contract(JSON.parse(this.config.CONTRACT_ABI)).at(this.config.CONTRACT_ADDRESS);
+    this.web3 = new Web3();
+    this.web3.setProvider(new this.web3.providers.HttpProvider(this.config.CONTRACT_PROVIDER));
+    this.contract = this.web3.eth.contract(JSON.parse(this.config.CONTRACT_ABI)).at(this.config.CONTRACT_ADDRESS);
+  }
+
+  currentUserAddress() {
+    return this.web3.eth.coinbase;
   }
 }
