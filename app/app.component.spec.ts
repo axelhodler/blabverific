@@ -9,12 +9,19 @@ import {EthereumGateway} from "./boundaries/ethereumgateway";
 describe('AppComponent', function () {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
+  let ethereumGatewaySpy: EthereumGateway;
+
+  ethereumGatewaySpy = <EthereumGateway>{
+    connectToContract() {
+    }
+  };
 
   beforeEach(async(() => {
+    spyOn(ethereumGatewaySpy, 'connectToContract');
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [AppComponent, SubmitReportComponent, VerifyReport],
-      providers: [Config, EthereumGateway]
+      providers: [Config, {provide: EthereumGateway, useValue: ethereumGatewaySpy}]
     })
       .compileComponents();
   }));
@@ -23,6 +30,10 @@ describe('AppComponent', function () {
     fixture = TestBed.createComponent(AppComponent);
     comp = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('makes ethereumGateway connect to the contract', () => {
+    expect(ethereumGatewaySpy.connectToContract).toHaveBeenCalled();
   });
 
   it('contains the other components', () => {
