@@ -33,7 +33,6 @@ describe('VerifyReport', function () {
     comp = fixture.componentInstance;
     contractMock = fixture.debugElement.injector.get(Contract);
     spyOn(contractMock, 'verifyReport');
-    spyOn(contractMock, 'isReportValid').and.returnValue(true);
     fixture.detectChanges();
   });
 
@@ -44,6 +43,7 @@ describe('VerifyReport', function () {
   });
 
   it('can find reports by id', () => {
+    spyOn(contractMock, 'isReportValid');
     var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
     reportIdInput.value = 'reportId';
     reportIdInput.dispatchEvent(new Event('input'));
@@ -54,6 +54,8 @@ describe('VerifyReport', function () {
   });
 
   it('displays validity of the report', () => {
+    spyOn(contractMock, 'isReportValid').and.returnValue(true);
+
     pageObject.clickFindReport();
 
     expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('is valid!');
