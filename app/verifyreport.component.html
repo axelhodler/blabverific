@@ -2,9 +2,11 @@
        placeholder="Hash of the report"
        [(ngModel)]="reportId">
 <button id="find-report"
+        [disabled]="!reportId"
         (click)="isReportValid()">Find Report
 </button>
 <button id="verify-report"
+        [disabled]="!reportId"
         (click)="verifyReport()">Verify Report
 </button>
 <div id="is-report-valid">

@@ -37,9 +37,14 @@ describe('VerifyReport', function () {
   });
 
   it('verifies a report on clicking the verify report button', () => {
+    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
+    reportIdInput.value = 'reportId';
+    reportIdInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
-    expect(contractMock.verifyReport).toHaveBeenCalledWith(undefined);
+    expect(contractMock.verifyReport).toHaveBeenCalledWith('reportId');
   });
 
   it('can find reports by id', () => {
@@ -47,6 +52,7 @@ describe('VerifyReport', function () {
     var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
     reportIdInput.value = 'reportId';
     reportIdInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
 
     pageObject.clickFindReport();
 
@@ -55,6 +61,10 @@ describe('VerifyReport', function () {
 
   it('displays if checked report is valid', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(true);
+    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
+    reportIdInput.value = 'reportId';
+    reportIdInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
 
     pageObject.clickFindReport();
 
@@ -63,9 +73,18 @@ describe('VerifyReport', function () {
 
   it('displays if checked report is invalid', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(false);
+    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
+    reportIdInput.value = 'reportId';
+    reportIdInput.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
 
     pageObject.clickFindReport();
 
     expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('not valid or not found!');
-  })
+  });
+
+  it('does not allow to click verify-report or find-report if no id is entered', () => {
+    expect(fixture.debugElement.query(By.css('#verify-report')).nativeElement.getAttribute('disabled')).toBe('');
+    expect(fixture.debugElement.query(By.css('#find-report')).nativeElement.getAttribute('disabled')).toBe('');
+  });
 });
