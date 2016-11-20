@@ -16,7 +16,7 @@ export class VerifyReport {
   }
 
   verifyReport() {
-    this.contract.verifyReport();
+    this.contract.verifyReport(this.reportId);
   }
 
   isReportValid() {

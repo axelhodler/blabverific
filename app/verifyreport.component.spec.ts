@@ -34,7 +34,7 @@ describe('VerifyReport', function () {
   it('verifies a report on clicking the verify report button', () => {
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
-    expect(contractSpy.verifyReport).toHaveBeenCalled();
+    expect(contractSpy.verifyReport).toHaveBeenCalledWith(undefined);
   });
 
   it('can find reports by id', () => {

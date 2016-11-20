@@ -7,13 +7,18 @@ export class Contract {
   }
 
   submitReport(hash: string) {
+    this.verify(hash);
   }
 
-  verifyReport() {
-
+  verifyReport(hash: string) {
+    this.verify(hash);
   }
 
   isReportValid(hash: string) {
     return this.ethereumGatway.contract.isValid.call(hash);
+  }
+
+  private verify(hash: string) {
+    this.ethereumGatway.contract.verify(hash);
   }
 }
