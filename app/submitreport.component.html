@@ -4,6 +4,7 @@
        [(ngModel)]="report"
        (ngModelChange)="updateReportHash()">
 <button id="submit-report"
+        [disabled]="!report"
         (click)="submitReport()">
   Submit Report
 </button>
