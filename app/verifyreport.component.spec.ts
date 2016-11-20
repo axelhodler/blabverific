@@ -13,7 +13,7 @@ describe('VerifyReport', function () {
   let comp: VerifyReport;
   let pageObject: VerifyReportComponentPageObject;
   let fixture: ComponentFixture<VerifyReport>;
-  let contractSpy: Contract;
+  let contractMock: Contract;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -28,16 +28,16 @@ describe('VerifyReport', function () {
     fixture = TestBed.createComponent(VerifyReport);
     pageObject = new VerifyReportComponentPageObject(fixture);
     comp = fixture.componentInstance;
-    contractSpy = fixture.debugElement.injector.get(Contract);
-    spyOn(contractSpy, 'verifyReport');
-    spyOn(contractSpy, 'isReportValid').and.returnValue(true);
+    contractMock = fixture.debugElement.injector.get(Contract);
+    spyOn(contractMock, 'verifyReport');
+    spyOn(contractMock, 'isReportValid').and.returnValue(true);
     fixture.detectChanges();
   });
 
   it('verifies a report on clicking the verify report button', () => {
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
-    expect(contractSpy.verifyReport).toHaveBeenCalledWith(undefined);
+    expect(contractMock.verifyReport).toHaveBeenCalledWith(undefined);
   });
 
   it('can find reports by id', () => {
@@ -47,7 +47,7 @@ describe('VerifyReport', function () {
 
     pageObject.clickFindReport();
 
-    expect(contractSpy.isReportValid).toHaveBeenCalledWith('reportId');
+    expect(contractMock.isReportValid).toHaveBeenCalledWith('reportId');
   });
 
   it('displays validity of the report', () => {
