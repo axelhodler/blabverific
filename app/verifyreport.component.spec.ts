@@ -37,10 +37,7 @@ describe('VerifyReport', function () {
   });
 
   it('verifies a report on clicking the verify report button', () => {
-    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
-    reportIdInput.value = 'reportId';
-    reportIdInput.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId');
 
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
@@ -49,10 +46,7 @@ describe('VerifyReport', function () {
 
   it('can find reports by id', () => {
     spyOn(contractMock, 'isReportValid');
-    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
-    reportIdInput.value = 'reportId';
-    reportIdInput.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
 
@@ -61,10 +55,7 @@ describe('VerifyReport', function () {
 
   it('displays if checked report is valid', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(true);
-    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
-    reportIdInput.value = 'reportId';
-    reportIdInput.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
 
@@ -73,10 +64,7 @@ describe('VerifyReport', function () {
 
   it('displays if checked report is invalid', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(false);
-    var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
-    reportIdInput.value = 'reportId';
-    reportIdInput.dispatchEvent(new Event('input'));
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
 
