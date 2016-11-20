@@ -6,14 +6,14 @@ import {
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "./boundaries/contract";
-import {Config} from "./config";
 
 describe('SubmitReportComponent', function () {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;
   let contractSpy = {
-    submitReport() {}
+    submitReport() {
+    }
   };
 
   beforeEach(async(() => {

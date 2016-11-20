@@ -5,8 +5,6 @@ import {VerifyReport} from "./verifyreport.component";
 import {Contract} from "./boundaries/contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
-import {EthereumGateway} from "./boundaries/ethereumgateway";
-import {Config} from "./config";
 import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobject";
 
 describe('VerifyReport', function () {
@@ -14,8 +12,10 @@ describe('VerifyReport', function () {
   let pageObject: VerifyReportComponentPageObject;
   let fixture: ComponentFixture<VerifyReport>;
   let contractMock = {
-    verifyReport() {},
-    isReportValid() {}
+    verifyReport() {
+    },
+    isReportValid() {
+    }
   };
 
   beforeEach(async(() => {
