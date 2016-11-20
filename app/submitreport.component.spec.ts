@@ -12,13 +12,15 @@ describe('SubmitReportComponent', function () {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;
-  let contractSpy: Contract;
+  let contractSpy = {
+    submitReport() {}
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [SubmitReportComponent],
-      providers: [Contract, Config]
+      providers: [{provide: Contract, useValue: contractSpy}]
     })
       .compileComponents();
   }));

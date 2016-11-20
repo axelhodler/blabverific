@@ -6,8 +6,7 @@ import {EthereumGateway} from "./boundaries/ethereumgateway";
 @Component({
   moduleId: module.id,
   selector: 'submit-report',
-  templateUrl: 'submitreport.component.html',
-  providers: [Contract, EthereumGateway]
+  templateUrl: 'submitreport.component.html'
 })
 export class SubmitReportComponent {
   @Input()
