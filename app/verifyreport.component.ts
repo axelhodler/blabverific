@@ -4,8 +4,7 @@ import {Contract} from "./boundaries/contract";
 @Component({
   moduleId: module.id,
   selector: 'verify-report',
-  templateUrl: 'verifyreport.component.html',
-  providers: [Contract]
+  templateUrl: 'verifyreport.component.html'
 })
 export class VerifyReport {
 

@@ -13,13 +13,16 @@ describe('VerifyReport', function () {
   let comp: VerifyReport;
   let pageObject: VerifyReportComponentPageObject;
   let fixture: ComponentFixture<VerifyReport>;
-  let contractMock: Contract;
+  let contractMock = {
+    verifyReport() {},
+    isReportValid() {}
+  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [VerifyReport],
-      providers: [Contract, EthereumGateway, Config]
+      providers: [{provide: Contract, useValue: contractMock}]
     })
       .compileComponents();
   }));
