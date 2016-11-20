@@ -53,11 +53,19 @@ describe('VerifyReport', function () {
     expect(contractMock.isReportValid).toHaveBeenCalledWith('reportId');
   });
 
-  it('displays validity of the report', () => {
+  it('displays if checked report is valid', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(true);
 
     pageObject.clickFindReport();
 
     expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('is valid!');
+  });
+
+  it('displays if checked report is invalid', () => {
+    spyOn(contractMock, 'isReportValid').and.returnValue(false);
+
+    pageObject.clickFindReport();
+
+    expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('not valid or not found!');
   })
 });

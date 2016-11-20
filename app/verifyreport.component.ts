@@ -20,8 +20,10 @@ export class VerifyReport {
   }
 
   isReportValid() {
-    if(this.contract.isReportValid(this.reportId)) {
-      this.isReportValidText = 'is valid!'
+    if (this.contract.isReportValid(this.reportId)) {
+      this.isReportValidText = 'is valid!';
+    } else {
+      this.isReportValidText = 'not valid or not found!';
     }
   }
 }
