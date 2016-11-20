@@ -42,13 +42,13 @@ describe('SubmitReportComponent', function () {
   });
 
   it('does not display submit button as enabled if nothing is entered', () => {
-    expect(fixture.debugElement.query(By.css('#submit-report')).nativeElement.getAttribute('disabled')).toBe('');
+    expect(pageObject.submitReportButton().getAttribute('disabled')).toBe('');
   });
 
   it('displays submit button as enabled if a report was entered', () => {
     pageObject.insertReportContent('my report');
 
-    expect(fixture.debugElement.query(By.css('#submit-report')).nativeElement.getAttribute('disabled')).toBeNull();
+    expect(pageObject.submitReportButton().getAttribute('disabled')).toBeNull();
   });
 
   it('submits the hash of the entered report', () => {

@@ -21,6 +21,10 @@ export class SubmitReportPageObject {
     this.contents.detectChanges();
   }
 
+  submitReportButton() {
+    return this.contents.debugElement.query(By.css('#submit-report')).nativeElement;
+  }
+
   clickSubmitReport() {
     this.contents.debugElement.query(By.css('#submit-report')).nativeElement.click();
   }
