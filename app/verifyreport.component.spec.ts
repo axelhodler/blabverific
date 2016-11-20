@@ -7,9 +7,11 @@ import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {Config} from "./config";
+import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobject";
 
 describe('VerifyReport', function () {
   let comp: VerifyReport;
+  let pageObject: VerifyReportComponentPageObject;
   let fixture: ComponentFixture<VerifyReport>;
   let contractSpy: Contract;
 
@@ -24,6 +26,7 @@ describe('VerifyReport', function () {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(VerifyReport);
+    pageObject = new VerifyReportComponentPageObject(fixture);
     comp = fixture.componentInstance;
     contractSpy = fixture.debugElement.injector.get(Contract);
     spyOn(contractSpy, 'verifyReport');
@@ -41,15 +44,14 @@ describe('VerifyReport', function () {
     var reportIdInput = fixture.debugElement.query(By.css('#report-id')).nativeElement;
     reportIdInput.value = 'reportId';
     reportIdInput.dispatchEvent(new Event('input'));
-    fixture.debugElement.query(By.css('#find-report')).nativeElement.click();
-    fixture.detectChanges();
+
+    pageObject.clickFindReport();
 
     expect(contractSpy.isReportValid).toHaveBeenCalledWith('reportId');
   });
 
   it('displays validity of the report', () => {
-    fixture.debugElement.query(By.css('#find-report')).nativeElement.click();
-    fixture.detectChanges();
+    pageObject.clickFindReport();
 
     expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('is valid!');
   })
