@@ -11,6 +11,7 @@ export class VerifyReport {
 
   @Input()
   reportId: string;
+  isReportValidText: string;
 
   constructor(private contract: Contract) {
   }
@@ -20,6 +21,8 @@ export class VerifyReport {
   }
 
   isReportValid() {
-    this.contract.isReportValid(this.reportId);
+    if(this.contract.isReportValid(this.reportId)) {
+      this.isReportValidText = 'is valid!'
+    }
   }
 }
