@@ -10,7 +10,7 @@ export class EthereumGateway {
 
   connectToContract() {
     let web3 = new Web3();
-    web3.setProvider(this.config.CONTRACT_PROVIDER);
-    this.contract = web3.eth.contract(this.config.CONTRACT_ABI).at(this.config.CONTRACT_ADDRESS);
+    web3.setProvider(new web3.providers.HttpProvider(this.config.CONTRACT_PROVIDER));
+    this.contract = web3.eth.contract(JSON.parse(this.config.CONTRACT_ABI)).at(this.config.CONTRACT_ADDRESS);
   }
 }
