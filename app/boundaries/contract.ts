@@ -19,7 +19,7 @@ export class Contract {
   }
 
   fetchVerifierAmount(hash: string) {
-    return 2;
+    return this.ethereumGatway.contract.verifiersFor.call(hash);
   }
 
   private verify(hash: string) {
