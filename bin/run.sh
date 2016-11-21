@@ -15,4 +15,9 @@ ABI=${CONFIG_CONTENTS_ARRAY[2]}
 sed -i '' 's#_CONTRACT_ABI_#'$ABI'#g' app/config.ts
 
 trap "lsof -t -i:8545 | xargs kill && git checkout app/config.ts" SIGINT
-npm run run
+
+if [ "$1" == "e2e" ]; then
+  tsc && concurrently "http-server -s" "protractor protractor.config.js" --kill-others --success first
+else
+  npm run run
+fi
