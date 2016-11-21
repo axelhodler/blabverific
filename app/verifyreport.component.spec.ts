@@ -15,6 +15,8 @@ describe('VerifyReport', function () {
     verifyReport() {
     },
     isReportValid() {
+    },
+    fetchAmountOfVerifiers() {
     }
   };
 
@@ -74,5 +76,14 @@ describe('VerifyReport', function () {
   it('does not allow to click verify-report or find-report if no id is entered', () => {
     expect(fixture.debugElement.query(By.css('#verify-report')).nativeElement.getAttribute('disabled')).toBe('');
     expect(fixture.debugElement.query(By.css('#find-report')).nativeElement.getAttribute('disabled')).toBe('');
+  });
+
+  it('displays the amount of verifiers for a specified report', () => {
+    spyOn(contractMock, 'fetchAmountOfVerifiers').and.returnValue(2);
+    pageObject.enterReportId('reportId');
+
+    pageObject.clickFindReport();
+
+    expect(fixture.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim()).toBe('2');
   });
 });
