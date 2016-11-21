@@ -16,7 +16,7 @@ describe('VerifyReport', function () {
     },
     isReportValid() {
     },
-    fetchAmountOfVerifiers() {
+    fetchVerifierAmount() {
     }
   };
 
@@ -79,11 +79,20 @@ describe('VerifyReport', function () {
   });
 
   it('displays the amount of verifiers for a specified report', () => {
-    spyOn(contractMock, 'fetchAmountOfVerifiers').and.returnValue(2);
+    spyOn(contractMock, 'fetchVerifierAmount').and.returnValue(2);
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
 
     expect(fixture.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim()).toBe('2');
+  });
+
+  it('displays the amount of verifiers for a specified report', () => {
+    spyOn(contractMock, 'fetchVerifierAmount').and.returnValue(3);
+    pageObject.enterReportId('reportId');
+
+    pageObject.clickFindReport();
+
+    expect(fixture.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim()).toBe('3');
   });
 });

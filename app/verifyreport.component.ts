@@ -11,6 +11,7 @@ export class VerifyReport {
   @Input()
   reportId: string;
   isReportValidText: string;
+  reportVerifierAmount: number;
 
   constructor(private contract: Contract) {
   }
@@ -25,5 +26,6 @@ export class VerifyReport {
     } else {
       this.isReportValidText = 'not valid or not found!';
     }
+    this.reportVerifierAmount = this.contract.fetchVerifierAmount(this.reportId);
   }
 }

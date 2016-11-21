@@ -18,6 +18,10 @@ export class Contract {
     return this.ethereumGatway.contract.isValid.call(hash);
   }
 
+  fetchVerifierAmount(hash: string) {
+    return 2;
+  }
+
   private verify(hash: string) {
     this.ethereumGatway.contract.verify(hash, {
       from: this.ethereumGatway.currentUserAddress()
