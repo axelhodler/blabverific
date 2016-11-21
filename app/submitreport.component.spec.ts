@@ -30,7 +30,7 @@ describe('SubmitReportComponent', function () {
     fixture = TestBed.createComponent(SubmitReportComponent);
     pageObject = new SubmitReportPageObject(fixture);
     comp = fixture.componentInstance;
-    contractSpy = fixture.debugElement.injector.get(Contract);
+    contractSpy = TestBed.get(Contract);
     spyOn(contractSpy, 'submitReport');
     fixture.detectChanges();
   });

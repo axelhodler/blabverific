@@ -33,7 +33,7 @@ describe('VerifyReport', function () {
     fixture = TestBed.createComponent(VerifyReport);
     pageObject = new VerifyReportComponentPageObject(fixture);
     comp = fixture.componentInstance;
-    contractMock = fixture.debugElement.injector.get(Contract);
+    contractMock = TestBed.get(Contract);
     spyOn(contractMock, 'verifyReport');
     fixture.detectChanges();
   });
