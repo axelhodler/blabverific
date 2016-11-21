@@ -84,7 +84,7 @@ describe('VerifyReport', function () {
 
     pageObject.clickFindReport();
 
-    expect(fixture.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim()).toBe('2');
+    expect(pageObject.reportsVerifierTextContent()).toBe('2');
   });
 
   it('displays the amount of verifiers for a specified report', () => {
@@ -93,6 +93,6 @@ describe('VerifyReport', function () {
 
     pageObject.clickFindReport();
 
-    expect(fixture.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim()).toBe('3');
+    expect(pageObject.reportsVerifierTextContent()).toBe('3');
   });
 });

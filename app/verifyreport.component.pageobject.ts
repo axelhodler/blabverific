@@ -15,6 +15,10 @@ export class VerifyReportComponentPageObject {
     return this.contents.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim();
   }
 
+  reportsVerifierTextContent() {
+    return this.contents.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim();
+  }
+
   enterReportId(hash: string) {
     var reportIdInput = this.contents.debugElement.query(By.css('#report-id')).nativeElement;
     reportIdInput.value = 'reportId';
