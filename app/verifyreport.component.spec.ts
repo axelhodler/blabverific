@@ -61,7 +61,7 @@ describe('VerifyReport', function () {
 
     pageObject.clickFindReport();
 
-    expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('is valid!');
+    expect(pageObject.isReportValidTextContent()).toBe('is valid!');
   });
 
   it('displays if checked report is invalid', () => {
@@ -70,7 +70,7 @@ describe('VerifyReport', function () {
 
     pageObject.clickFindReport();
 
-    expect(fixture.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim()).toBe('not valid or not found!');
+    expect(pageObject.isReportValidTextContent()).toBe('not valid or not found!');
   });
 
   it('does not allow to click verify-report or find-report if no id is entered', () => {
