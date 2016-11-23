@@ -25,6 +25,6 @@ export class Contract {
   private verify(hash: string) {
     this.ethereumGatway.contract.verify(hash, {
       from: this.ethereumGatway.currentUserAddress()
-    });
+    }, () => {});
   }
 }
