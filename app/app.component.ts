@@ -10,10 +10,15 @@ import {EthereumGateway} from './boundaries/ethereumgateway';
              <br>
              <div>
                <verify-report></verify-report>
-             </div>`
+             </div><div id="error">{{ error }}</div>`
 })
 export class AppComponent {
+  error: string;
   constructor(private ethereumGateway: EthereumGateway) {
-    ethereumGateway.connectToContract();
+    try {
+      ethereumGateway.connectToContract();
+    } catch (e) {
+      this.error = 'Please Install MetaMask';
+    }
   }
 }
