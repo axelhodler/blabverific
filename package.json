@@ -15,7 +15,7 @@
     "test": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "webdriver:update": "./node_modules/webdriver-manager/bin/webdriver-manager update",
+    "webdriver:update": "./node_modules/protractor/bin/webdriver-manager update",
     "install": "npm run pree2e && git submodule init && git submodule update && cd contract && npm install"
   },
   "keywords": [],
