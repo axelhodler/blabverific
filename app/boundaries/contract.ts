@@ -3,7 +3,7 @@ import {EthereumGateway} from "./ethereumgateway";
 
 @Injectable()
 export class Contract {
-  constructor(private ethereumGatway: EthereumGateway) {
+  constructor(private ethereumGateway: EthereumGateway) {
   }
 
   submitReport(hash: string) {
@@ -15,16 +15,16 @@ export class Contract {
   }
 
   isReportValid(hash: string) {
-    return this.ethereumGatway.contract.isValid.call(hash);
+    return this.ethereumGateway.contract.isValid.call(hash);
   }
 
   fetchVerifierAmount(hash: string) {
-    return this.ethereumGatway.contract.verifiersFor.call(hash);
+    return this.ethereumGateway.contract.verifiersFor.call(hash);
   }
 
   private verify(hash: string) {
-    this.ethereumGatway.contract.verify(hash, {
-      from: this.ethereumGatway.currentUserAddress()
+    this.ethereumGateway.contract.verify(hash, {
+      from: this.ethereumGateway.currentUserAddress()
     }, () => {});
   }
 }
