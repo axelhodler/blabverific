@@ -15,7 +15,7 @@
     "test-once": "tsc && karma start karma.conf.js --single-run",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
-    "webdriver:update": "webdriver-manager update",
+    "webdriver:update": "./node_modules/webdriver-manager/bin/webdriver-manager update",
     "install": "git submodule update && cd contract && npm install"
   },
   "keywords": [],
