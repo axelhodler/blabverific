@@ -16,7 +16,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "webdriver:update": "./node_modules/webdriver-manager/bin/webdriver-manager update",
-    "install": "git submodule update && cd contract && npm install"
+    "install": "npm run pree2e && git submodule update && cd contract && npm install"
   },
   "keywords": [],
   "author": "",
