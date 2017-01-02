@@ -16,7 +16,7 @@
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "webdriver:update": "webdriver-manager update",
-    "install": "cd contract && npm install"
+    "install": "git submodule update && cd contract && npm install"
   },
   "keywords": [],
   "author": "",
