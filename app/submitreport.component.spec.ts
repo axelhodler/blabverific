@@ -6,7 +6,6 @@ import {
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "./boundaries/contract";
-import {By} from "@angular/platform-browser";
 
 describe('SubmitReportComponent', function () {
   let pageObject: SubmitReportPageObject;
