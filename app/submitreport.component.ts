@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {Hashing} from "./boundaries/hashing";
 import {Contract} from "./boundaries/contract";
-import {EthereumGateway} from "./boundaries/ethereumgateway";
+import {ReportsGateway} from "./boundaries/reportsgateway";
 
 @Component({
   moduleId: module.id,
@@ -16,7 +16,7 @@ export class SubmitReportComponent {
 
   hashing: Hashing;
 
-  constructor(private contract: Contract) {
+  constructor(private contract: Contract, private reportsGateway: ReportsGateway) {
     this.hashing = new Hashing();
   }
 
@@ -25,6 +25,8 @@ export class SubmitReportComponent {
   }
 
   submitReport() {
-    this.contract.submitReport(this.reportHash);
+    return this.contract.submitReport(this.reportHash).then(() => {
+      return this.reportsGateway.saveReport(this.reportHash);
+    });
   }
 }

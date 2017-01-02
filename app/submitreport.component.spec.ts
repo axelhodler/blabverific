@@ -6,11 +6,16 @@ import {
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "./boundaries/contract";
+import {ReportsGateway} from "./boundaries/reportsgateway";
 
 describe('SubmitReportComponent', function () {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;
+  let reportsGatewaySpy = {
+    saveReport() {
+    }
+  };
   let contractSpy = {
     submitReport() {
     }
@@ -20,7 +25,7 @@ describe('SubmitReportComponent', function () {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [SubmitReportComponent],
-      providers: [{provide: Contract, useValue: contractSpy}]
+      providers: [{provide: Contract, useValue: contractSpy}, {provide: ReportsGateway, useValue: reportsGatewaySpy}]
     })
       .compileComponents();
   }));
@@ -30,7 +35,9 @@ describe('SubmitReportComponent', function () {
     pageObject = new SubmitReportPageObject(fixture);
     comp = fixture.componentInstance;
     contractSpy = TestBed.get(Contract);
-    spyOn(contractSpy, 'submitReport');
+    reportsGatewaySpy = TestBed.get(ReportsGateway);
+    spyOn(contractSpy, 'submitReport').and.returnValue(Promise.resolve());
+    spyOn(reportsGatewaySpy, 'saveReport').and.returnValue(Promise.resolve());
     fixture.detectChanges();
   });
 
@@ -56,5 +63,14 @@ describe('SubmitReportComponent', function () {
     pageObject.clickSubmitReport();
 
     expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
+  });
+
+  it('stores the report after submitting to the contract', (done) => {
+    comp.reportHash = '0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc';
+    comp.submitReport().then(function () {
+      expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
+      expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
+      done();
+    });
   });
 });

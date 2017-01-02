@@ -7,7 +7,7 @@ export class Contract {
   }
 
   submitReport(hash: string) {
-    this.verify(hash);
+    return this.verify(hash);
   }
 
   verifyReport(hash: string) {
@@ -23,8 +23,10 @@ export class Contract {
   }
 
   private verify(hash: string) {
-    this.ethereumGateway.contract.verify(hash, {
-      from: this.ethereumGateway.currentUserAddress()
-    }, () => {});
+    return new Promise((resolve) => {
+      this.ethereumGateway.contract.verify(hash, {
+        from: this.ethereumGateway.currentUserAddress()
+      }, resolve())
+    });
   }
 }

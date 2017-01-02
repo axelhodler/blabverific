@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {Config} from "./config";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {Contract} from "./boundaries/contract";
+import {ReportsGateway} from "./boundaries/reportsgateway";
 
 describe('AppComponent', function () {
   let comp: AppComponent;
@@ -22,7 +23,7 @@ describe('AppComponent', function () {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [AppComponent, SubmitReportComponent, VerifyReport],
-      providers: [Config, {provide: EthereumGateway, useValue: ethereumGatewaySpy}, Contract]
+      providers: [Config, {provide: EthereumGateway, useValue: ethereumGatewaySpy}, Contract, ReportsGateway]
     })
       .compileComponents();
   }));
