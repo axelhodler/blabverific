@@ -2,29 +2,17 @@ import {ListReportsComponent} from "./listreports.component";
 import {ComponentFixture, async, TestBed, fakeAsync} from "@angular/core/testing";
 import {ListReportsPageObject} from "./listreports.component.pageobject";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
+import {MockReportsGateway} from "../../testdoubles/mockreportsgateway";
 
 describe('ListReportsComponent', () => {
   let comp: ListReportsComponent;
   let fixture: ComponentFixture<ListReportsComponent>;
   let pageObject: ListReportsPageObject;
-  let reportsGatewayStub = {
-    reports() {
-      return Promise.resolve([{
-        id: 'hashedreport',
-        content: 'report contents',
-        submitter: 'Sally the Submitter'
-      }, {
-        id: 'reporthash',
-        content: 'report content',
-        submitter: 'Sven the Submitter'
-      }]);
-    }
-  };
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ListReportsComponent],
-      providers: [{provide: ReportsGateway, useValue: reportsGatewayStub}]
+      providers: [{provide: ReportsGateway, useClass: MockReportsGateway}]
     })
       .compileComponents();
   }));
