@@ -1,4 +1,5 @@
 <ul id="reports-list">
-  <li>hashedreport report contents Sally the Submitter</li>
-  <li>sample</li>
+  <li *ngFor="let report of reports">
+    {{report.id}} {{report.content}} {{report.submitter}}
+  </li>
 </ul>

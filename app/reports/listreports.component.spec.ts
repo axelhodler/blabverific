@@ -21,17 +21,6 @@ describe('ListReportsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('is defined', () => {
-    expect(comp).toBeDefined();
-  });
-
-  it('displays a list of reports', () => {
-    let reportsList = pageObject.reportsList();
-
-    expect(reportsList.tagName.toLowerCase()).toBe('ul');
-    expect(reportsList.getElementsByTagName('li').length).toBe(2);
-  });
-
   it('displays the reporters name, report contents and its id', () => {
     let report = 'hashedreport report contents Sally the Submitter';
     comp.reports = [{
@@ -39,8 +28,22 @@ describe('ListReportsComponent', () => {
       content: 'report contents',
       submitter: 'Sally the Submitter'
     }];
+    fixture.detectChanges();
     let reportsList = pageObject.reportsList();
 
-    expect(reportsList.firstElementChild.textContent).toBe(report)
+    expect(reportsList.firstElementChild.textContent).toContain(report)
+  });
+
+  it('TRIANGULATION - displays the reporters name, report contents and its id', () => {
+    let report = 'reporthash report content Sven the Submitter';
+    comp.reports = [{
+      id: 'reporthash',
+      content: 'report content',
+      submitter: 'Sven the Submitter'
+    }];
+    fixture.detectChanges();
+    let reportsList = pageObject.reportsList();
+
+    expect(reportsList.firstElementChild.textContent).toContain(report)
   });
 });

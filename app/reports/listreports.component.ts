@@ -5,7 +5,6 @@ import {Report} from "./report";
   moduleId: module.id,
   templateUrl: 'listreports.component.html'
 })
-
 export class ListReportsComponent {
   reports: Report[];
 }
