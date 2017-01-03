@@ -26,7 +26,7 @@ export class Contract {
     return new Promise((resolve) => {
       this.ethereumGateway.contract.verify(hash, {
         from: this.ethereumGateway.currentUserAddress()
-      }, resolve())
-    });
+      }, () => resolve())
+    })
   }
 }
