@@ -1,4 +1,4 @@
-import {SubmitReportComponent} from "./submitreport.component";
+import {SubmitReportComponent} from "./reports/submit/submitreport.component";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
 import {VerifyReport} from "./verifyreport.component";

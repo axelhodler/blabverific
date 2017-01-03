@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
-import {Hashing} from "./boundaries/hashing";
-import {Contract} from "./boundaries/contract";
-import {ReportsGateway} from "./boundaries/reportsgateway";
+import {Hashing} from "../../boundaries/hashing";
+import {Contract} from "../../boundaries/contract";
+import {ReportsGateway} from "../../boundaries/reportsgateway";
 
 @Component({
   moduleId: module.id,

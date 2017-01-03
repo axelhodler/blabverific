@@ -5,8 +5,8 @@ import {
 } from '@angular/core/testing';
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
-import {Contract} from "./boundaries/contract";
-import {ReportsGateway} from "./boundaries/reportsgateway";
+import {Contract} from "../../boundaries/contract";
+import {ReportsGateway} from "../../boundaries/reportsgateway";
 
 describe('SubmitReportComponent', () => {
   let pageObject: SubmitReportPageObject;
