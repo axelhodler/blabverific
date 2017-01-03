@@ -4,13 +4,7 @@ import {EthereumGateway} from './boundaries/ethereumgateway';
 @Component({
   moduleId: module.id,
   selector: 'blab-verification',
-  template: `<h1>blockLAB Verify</h1>
-             <submit-report></submit-report>
-             <br>
-             <br>
-             <div>
-               <verify-report></verify-report>
-             </div><div id="error">{{ error }}</div>`
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
   error: string;
