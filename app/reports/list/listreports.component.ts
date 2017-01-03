@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
-import {Report} from "./report";
-import {ReportsGateway} from "../boundaries/reportsgateway";
+import {Report} from "../report";
+import {ReportsGateway} from "../../boundaries/reportsgateway";
 
 @Component({
   moduleId: module.id,

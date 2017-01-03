@@ -1,7 +1,7 @@
 import {ListReportsComponent} from "./listreports.component";
 import {ComponentFixture, async, TestBed} from "@angular/core/testing";
 import {ListReportsPageObject} from "./listreports.component.pageobject";
-import {ReportsGateway} from "../boundaries/reportsgateway";
+import {ReportsGateway} from "../../boundaries/reportsgateway";
 
 describe('ListReportsComponent', () => {
   let comp: ListReportsComponent;
