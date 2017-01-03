@@ -1,5 +1,5 @@
 import {ListReportsComponent} from "./listreports.component";
-import {ComponentFixture, async, TestBed} from "@angular/core/testing";
+import {ComponentFixture, async, TestBed, fakeAsync} from "@angular/core/testing";
 import {ListReportsPageObject} from "./listreports.component.pageobject";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 
@@ -9,7 +9,7 @@ describe('ListReportsComponent', () => {
   let pageObject: ListReportsPageObject;
   let reportsGatewayStub = {
     reports() {
-      return [{
+      return Promise.resolve([{
         id: 'hashedreport',
         content: 'report contents',
         submitter: 'Sally the Submitter'
@@ -17,7 +17,7 @@ describe('ListReportsComponent', () => {
         id: 'reporthash',
         content: 'report content',
         submitter: 'Sven the Submitter'
-      }];
+      }]);
     }
   };
 
@@ -29,10 +29,14 @@ describe('ListReportsComponent', () => {
       .compileComponents();
   }));
 
-  beforeEach(() => {
+  beforeEach(fakeAsync(() => {
     fixture = TestBed.createComponent(ListReportsComponent);
     pageObject = new ListReportsPageObject(fixture);
     comp = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  beforeEach(() => {
     fixture.detectChanges();
   });
 

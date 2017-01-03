@@ -5,7 +5,7 @@ import {Report} from "../reports/report";
 export class ReportsGateway {
   saveReport(hash: string) {
   }
-  reports(): Report[] {
+  reports(): Promise<Report[]> {
     return;
   }
 }

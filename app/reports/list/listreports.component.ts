@@ -13,6 +13,8 @@ export class ListReportsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.reports = this.reportsGateway.reports();
+    this.reportsGateway.reports().then(reports => {
+      this.reports = reports
+    });
   }
 }
