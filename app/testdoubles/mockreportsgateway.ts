@@ -1,7 +1,6 @@
-import {ReportsGateway} from "../boundaries/reportsgateway";
 import {Report} from "../reports/report";
 
-export class MockReportsGateway extends ReportsGateway {
+export class MockReportsGateway {
   saveReport(hash: string): Promise<Report> {
     return;
   }
