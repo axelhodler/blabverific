@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {Contract} from "./boundaries/contract";
+import {Contract} from "../../boundaries/contract";
 
 @Component({
   moduleId: module.id,

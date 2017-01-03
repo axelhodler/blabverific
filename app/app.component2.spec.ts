@@ -1,7 +1,7 @@
 import {SubmitReportComponent} from "./reports/submit/submitreport.component";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
-import {VerifyReport} from "./verifyreport.component";
+import {VerifyReport} from "./reports/verify/verifyreport.component";
 import {FormsModule} from "@angular/forms";
 import {Config} from "./config";
 import {EthereumGateway} from "./boundaries/ethereumgateway";
