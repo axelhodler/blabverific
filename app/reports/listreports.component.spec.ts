@@ -13,6 +13,10 @@ describe('ListReportsComponent', () => {
         id: 'hashedreport',
         content: 'report contents',
         submitter: 'Sally the Submitter'
+      }, {
+        id: 'reporthash',
+        content: 'report content',
+        submitter: 'Sven the Submitter'
       }];
     }
   };
@@ -41,14 +45,8 @@ describe('ListReportsComponent', () => {
 
   it('TRIANGULATION - displays the reporters name, report contents and its id', () => {
     let report = 'reporthash report content Sven the Submitter';
-    comp.reports = [{
-      id: 'reporthash',
-      content: 'report content',
-      submitter: 'Sven the Submitter'
-    }];
-    fixture.detectChanges();
     let reportsList = pageObject.reportsList();
 
-    expect(reportsList.firstElementChild.textContent).toContain(report)
+    expect(reportsList.lastElementChild.textContent).toContain(report)
   });
 });
