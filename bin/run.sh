@@ -11,7 +11,7 @@ sed -i '' 's#_CONTRACT_ADDRESS_#'$ADDRESS'#g' app/config.ts
 ABI=${CONFIG_CONTENTS_ARRAY[1]}
 sed -i '' 's#_CONTRACT_ABI_#'$ABI'#g' app/config.ts
 
-trap "lsof -t -i:8545 | xargs kill && git checkout app/config.ts" SIGINT
+trap "git checkout app/config.ts" SIGINT
 
 if [ "$1" == "e2e" ]; then
   tsc && concurrently "http-server -s" "./node_modules/protractor/bin/protractor protractor.config.js" --kill-others --success first && git checkout app/config.ts
