@@ -8,7 +8,7 @@ import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "./boundaries/contract";
 import {ReportsGateway} from "./boundaries/reportsgateway";
 
-describe('SubmitReportComponent', function () {
+describe('SubmitReportComponent', () => {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;

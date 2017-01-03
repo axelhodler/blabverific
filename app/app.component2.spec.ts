@@ -9,7 +9,7 @@ import {Contract} from "./boundaries/contract";
 import {By} from "@angular/platform-browser";
 import {ReportsGateway} from "./boundaries/reportsgateway";
 
-describe('AppComponent', function () {
+describe('AppComponent', () =>{
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let ethereumGatewaySpy: EthereumGateway;

@@ -7,7 +7,7 @@ import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobject";
 
-describe('VerifyReport', function () {
+describe('VerifyReport', () => {
   let comp: VerifyReport;
   let pageObject: VerifyReportComponentPageObject;
   let fixture: ComponentFixture<VerifyReport>;

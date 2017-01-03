@@ -8,7 +8,7 @@ import {EthereumGateway} from "./boundaries/ethereumgateway";
 import {Contract} from "./boundaries/contract";
 import {ReportsGateway} from "./boundaries/reportsgateway";
 
-describe('AppComponent', function () {
+describe('AppComponent', () => {
   let comp: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let ethereumGatewaySpy: EthereumGateway;
