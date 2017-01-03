@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {Report} from "./report";
 
 @Component({
   moduleId: module.id,
@@ -6,5 +7,5 @@ import {Component} from "@angular/core";
 })
 
 export class ListReportsComponent {
-  reports: string[];
+  reports: Report[];
 }

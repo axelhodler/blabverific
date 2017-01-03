@@ -34,7 +34,11 @@ describe('ListReportsComponent', () => {
 
   it('displays the reporters name, report contents and its id', () => {
     let report = 'hashedreport report contents Sally the Submitter';
-    comp.reports = [report];
+    comp.reports = [{
+      id: 'hashedreport',
+      content: 'report contents',
+      submitter: 'Sally the Submitter'
+    }];
     let reportsList = pageObject.reportsList();
 
     expect(reportsList.firstElementChild.textContent).toBe(report)
