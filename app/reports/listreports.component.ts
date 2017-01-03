@@ -2,7 +2,11 @@ import {Component} from "@angular/core";
 
 @Component({
   moduleId: module.id,
-  template: `<h1>hi</h1>`
+  template:
+    `<ul id="reports-list">
+       <li>sample</li>
+       <li>sample</li>
+     </ul>`
 })
 
 export class ListReportsComponent {
