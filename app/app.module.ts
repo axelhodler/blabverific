@@ -9,19 +9,14 @@ import {Config} from "./config";
 import {Contract} from "./boundaries/contract";
 import {ReportsGateway} from "./boundaries/reportsgateway";
 import {MockReportsGateway} from "./testdoubles/mockreportsgateway";
-import {RouterModule} from "@angular/router";
 import {ListReportsComponent} from "./reports/list/listreports.component";
+import {AppRoutingModule} from "./app-routing.module";
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot([
-      {
-        path: 'reports',
-        component: ListReportsComponent
-      }
-    ])
+    AppRoutingModule
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
   bootstrap: [AppComponent],
