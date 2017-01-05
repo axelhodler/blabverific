@@ -8,12 +8,11 @@ import {AppComponent} from "./app.component";
 import {Config} from "./config";
 import {Contract} from "./boundaries/contract";
 import {ReportsGateway} from "./boundaries/reportsgateway";
-import {MockReportsGateway} from "./testdoubles/mockreportsgateway";
 import {ListReportsComponent} from "./reports/list/listreports.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule} from "@angular/http";
-import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService }  from './in-memory-data.service';
+import {InMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryDataService} from "./in-memory-data.service";
 
 @NgModule({
   imports: [
@@ -25,7 +24,7 @@ import { InMemoryDataService }  from './in-memory-data.service';
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, Contract, Config, {provide: ReportsGateway, useClass: MockReportsGateway}]
+  providers: [EthereumGateway, Contract, Config, ReportsGateway]
 })
 export class AppModule {
 }
