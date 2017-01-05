@@ -26,7 +26,7 @@ export class SubmitReportComponent {
 
   submitReport() {
     return this.contract.submitReport(this.reportHash).then(() => {
-      return this.reportsGateway.saveReport(this.reportHash);
+      return this.reportsGateway.saveReport(this.report);
     });
   }
 }
