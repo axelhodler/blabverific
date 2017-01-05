@@ -1,7 +1,7 @@
 import {SubmitReportComponent} from './submitreport.component';
 
 import {
-  async, ComponentFixture, TestBed
+  async, ComponentFixture, TestBed, fakeAsync, tick
 } from '@angular/core/testing';
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
@@ -65,13 +65,13 @@ describe('SubmitReportComponent', () => {
     expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
   });
 
-  it('stores the report after submitting to the contract', (done) => {
+  it('stores the report after submitting to the contract', fakeAsync(() => {
     pageObject.insertReportContent('my report');
 
-    comp.submitReport().then(function () {
-      expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
-      expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report');
-      done();
-    });
-  });
+    comp.submitReport();
+    tick();
+
+    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
+    expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report');
+  }));
 });
