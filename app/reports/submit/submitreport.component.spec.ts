@@ -1,17 +1,19 @@
-import {SubmitReportComponent} from './submitreport.component';
-
-import {
-  async, ComponentFixture, TestBed, fakeAsync, tick
-} from '@angular/core/testing';
+import {SubmitReportComponent} from "./submitreport.component";
+import {async, ComponentFixture, TestBed, fakeAsync, tick} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "../../boundaries/contract";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
+import {Router} from "@angular/router";
 
 describe('SubmitReportComponent', () => {
   let pageObject: SubmitReportPageObject;
   let comp: SubmitReportComponent;
   let fixture: ComponentFixture<SubmitReportComponent>;
+  let routerSpy = {
+    navigate() {
+    }
+  };
   let reportsGatewaySpy = {
     saveReport() {
     }
@@ -25,7 +27,13 @@ describe('SubmitReportComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [SubmitReportComponent],
-      providers: [{provide: Contract, useValue: contractSpy}, {provide: ReportsGateway, useValue: reportsGatewaySpy}]
+      providers: [{
+        provide: Contract, useValue: contractSpy
+      }, {
+        provide: ReportsGateway, useValue: reportsGatewaySpy
+      }, {
+        provide: Router, useValue: routerSpy
+      }]
     })
       .compileComponents();
   }));
@@ -36,8 +44,10 @@ describe('SubmitReportComponent', () => {
     comp = fixture.componentInstance;
     contractSpy = TestBed.get(Contract);
     reportsGatewaySpy = TestBed.get(ReportsGateway);
+    routerSpy = TestBed.get(Router);
     spyOn(contractSpy, 'submitReport').and.returnValue(Promise.resolve());
     spyOn(reportsGatewaySpy, 'saveReport').and.returnValue(Promise.resolve());
+    spyOn(routerSpy, 'navigate');
     fixture.detectChanges();
   });
 
@@ -73,5 +83,14 @@ describe('SubmitReportComponent', () => {
 
     expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
     expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report');
+  }));
+
+  it('navigates to reports overview after creating one', fakeAsync(() => {
+    pageObject.insertReportContent('my report');
+
+    pageObject.clickSubmitReport();
+    tick();
+
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['reports']);
   }));
 });
