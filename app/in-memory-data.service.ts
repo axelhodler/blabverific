@@ -4,11 +4,13 @@ export class InMemoryDataService implements InMemoryDbService {
     let reports = [{
       id: 'hashedreport',
       content: 'report contents',
-      submitter: 'Sally the Submitter'
+      submitter: 'Sally the Submitter',
+      verifierCount: 3
     }, {
       id: 'reporthash',
       content: 'report content',
-      submitter: 'Sven the Submitter'
+      submitter: 'Sven the Submitter',
+      verifierCount: 2
     }];
     return {reports};
   }
