@@ -1,6 +1,12 @@
 <h1 id="reports-list-heading">All Reports</h1>
 
 <table id="reports-list">
+  <tr>
+    <td>Hash</td>
+    <td>Content</td>
+    <td>Submitter</td>
+    <td>Verifier Count</td>
+  </tr>
   <tr *ngFor="let report of reports">
     <td>{{report.id}}</td>
     <td>{{report.content}}</td>

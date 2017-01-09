@@ -34,7 +34,7 @@ describe('ListReportsComponent', () => {
 
     let rows = reportsList.firstElementChild.getElementsByTagName('tr');
 
-    expect(rows[0].textContent).toContain('Sally the Submitter');
-    expect(rows[1].textContent).toContain('Sven the Submitter');
+    expect(rows[1].textContent).toContain('Sally the Submitter');
+    expect(rows[2].textContent).toContain('Sven the Submitter');
   });
 });
