@@ -32,13 +32,9 @@ describe('ListReportsComponent', () => {
     let report = 'hashedreport report contents Sally the Submitter';
     let reportsList = pageObject.reportsList();
 
-    expect(reportsList.firstElementChild.textContent).toContain(report)
-  });
+    let rows = reportsList.firstElementChild.getElementsByTagName('tr');
 
-  it('TRIANGULATION - displays the reporters name, report contents and its id', () => {
-    let report = 'reporthash report content Sven the Submitter';
-    let reportsList = pageObject.reportsList();
-
-    expect(reportsList.lastElementChild.textContent).toContain(report)
+    expect(rows[0].textContent).toContain('Sally the Submitter');
+    expect(rows[1].textContent).toContain('Sven the Submitter');
   });
 });
