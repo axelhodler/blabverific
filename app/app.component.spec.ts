@@ -44,6 +44,5 @@ describe('AppComponent', () => {
 
   it('contains the other components', () => {
     expect(fixture.nativeElement.getElementsByTagName('verify-report')[0]).toBeDefined();
-    expect(fixture.nativeElement.getElementsByTagName('submit-report')[0]).toBeDefined();
   })
 });
