@@ -14,9 +14,11 @@ import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
 import {MockContract} from "./testdoubles/mockcontract";
 import {Contract} from "./boundaries/contract";
+import { MaterialModule } from '@angular/material';
 
 @NgModule({
   imports: [
+    MaterialModule.forRoot(),
     BrowserModule,
     FormsModule,
     HttpModule,

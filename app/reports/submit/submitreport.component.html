@@ -3,7 +3,9 @@
        placeholder="Describe what you did"
        [(ngModel)]="report"
        (ngModelChange)="updateReportHash()">
-<button id="submit-report"
+<button md-raised-button
+        color="primary"
+        id="submit-report"
         [disabled]="!report"
         (click)="submitReport()">
   Submit Report
