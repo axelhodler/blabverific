@@ -43,7 +43,4 @@ describe('AppComponent', () => {
     expect(ethereumGatewaySpy.connectToContract).toHaveBeenCalled();
   });
 
-  it('contains the other components', () => {
-    expect(fixture.nativeElement.getElementsByTagName('verify-report')[0]).toBeDefined();
-  })
 });
