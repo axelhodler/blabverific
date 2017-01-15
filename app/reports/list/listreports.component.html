@@ -6,11 +6,15 @@
     <td>Content</td>
     <td>Submitter</td>
     <td>Verifier Count</td>
+    <td>Verify</td>
   </tr>
   <tr *ngFor="let report of reports">
     <td>{{report.id}}</td>
     <td>{{report.content}}</td>
     <td>{{report.submitter}}</td>
     <td>{{report.verifierCount}}</td>
+    <button md-mini-fab>
+      <md-icon>✔</md-icon>
+    </button>
   </tr>
 </table>

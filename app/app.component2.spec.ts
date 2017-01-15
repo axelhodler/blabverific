@@ -12,6 +12,7 @@ import {ListReportsComponent} from "./reports/list/listreports.component";
 import {AppRoutingModule} from "./app-routing.module";
 import {RouterTestingModule} from "@angular/router/testing";
 import {HttpModule} from "@angular/http";
+import {MaterialModule} from "@angular/material";
 
 describe('AppComponent', () =>{
   let comp: AppComponent;
@@ -26,7 +27,7 @@ describe('AppComponent', () =>{
   beforeEach(async(() => {
     spyOn(ethereumGatewaySpy, 'connectToContract').and.throwError('');
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpModule, AppRoutingModule, RouterTestingModule],
+      imports: [FormsModule, HttpModule, AppRoutingModule, RouterTestingModule, MaterialModule.forRoot()],
       declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
       providers: [Config, {provide: EthereumGateway, useValue: ethereumGatewaySpy}, Contract, ReportsGateway]
     })

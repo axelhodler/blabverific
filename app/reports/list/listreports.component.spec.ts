@@ -3,6 +3,7 @@ import {ComponentFixture, async, TestBed, fakeAsync} from "@angular/core/testing
 import {ListReportsPageObject} from "./listreports.component.pageobject";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {MockReportsGateway} from "../../testdoubles/mockreportsgateway";
+import {MaterialModule} from "@angular/material";
 
 describe('ListReportsComponent', () => {
   let comp: ListReportsComponent;
@@ -11,6 +12,7 @@ describe('ListReportsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MaterialModule.forRoot()],
       declarations: [ListReportsComponent],
       providers: [{provide: ReportsGateway, useClass: MockReportsGateway}]
     })
