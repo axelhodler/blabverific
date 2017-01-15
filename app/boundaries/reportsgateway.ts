@@ -12,7 +12,11 @@ export class ReportsGateway {
   }
 
   saveReport(content: string): Promise<Report> {
-    return this.http.post(this.REPORTS_URL, JSON.stringify({content: content}), {headers: this.HEADERS})
+    return this.http.post(this.REPORTS_URL, JSON.stringify({
+      content: content,
+      submitter: 'currentUser',
+      verifierCount: 0
+    }), {headers: this.HEADERS})
       .toPromise()
       .then(response => response.json().data);
   }
