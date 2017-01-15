@@ -10,8 +10,7 @@ module.exports = function(config) {
     frameworks: ['jasmine'],
     plugins: [
       require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-jasmine-html-reporter') // click "Debug" in browser to see it
+      require('karma-chrome-launcher')
     ],
 
     customLaunchers: {
@@ -76,7 +75,7 @@ module.exports = function(config) {
 
     exclude: [],
     preprocessors: {},
-    reporters: ['progress', 'kjhtml'],//'html'],
+    reporters: ['progress'],
 
     port: 9876,
     colors: true,
