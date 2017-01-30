@@ -15,6 +15,7 @@ import {InMemoryDataService} from "./in-memory-data.service";
 import {MockContract} from "./testdoubles/mockcontract";
 import {Contract} from "./boundaries/contract";
 import { MaterialModule } from '@angular/material';
+import {Hashing} from "./boundaries/hashing";
 
 @NgModule({
   imports: [
@@ -27,7 +28,7 @@ import { MaterialModule } from '@angular/material';
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, {provide: Contract, useClass: MockContract}, Config, ReportsGateway]
+  providers: [EthereumGateway, {provide: Contract, useClass: MockContract}, Config, ReportsGateway, Hashing]
 })
 export class AppModule {
 }
