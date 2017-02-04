@@ -9,7 +9,7 @@ describe('Blabverific E2E Tests', () => {
   });
 
   it('displays: ' + expectedMsg + ' for the default route', () => {
-    expect(element(by.css('h1')).getText()).toEqual(expectedMsg);
+    expect(element(by.css('md-toolbar')).getText()).toEqual(expectedMsg);
   });
 
   it('can enter the reports route via link', () => {
