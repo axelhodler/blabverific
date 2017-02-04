@@ -12,7 +12,7 @@ export class AppComponent {
     try {
       ethereumGateway.connectToContract();
     } catch (e) {
-      this.error = 'Please Install MetaMask';
+      this.error = 'Could not connect to ethereum chain. Please Install MetaMask';
     }
   }
 }

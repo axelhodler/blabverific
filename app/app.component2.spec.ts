@@ -41,6 +41,6 @@ describe('AppComponent', () =>{
   });
 
   it('tells the user to install MetaMask on fail', () => {
-    expect(fixture.debugElement.query(By.css('#error')).nativeElement.textContent).toBe('Please Install MetaMask');
+    expect(fixture.debugElement.query(By.css('#error')).nativeElement.textContent).toContain('Please Install MetaMask');
   });
 });
