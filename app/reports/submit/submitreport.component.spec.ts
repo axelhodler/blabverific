@@ -5,6 +5,7 @@ import {SubmitReportPageObject} from "./submitreport.component.pageobject";
 import {Contract} from "../../boundaries/contract";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {Router} from "@angular/router";
+import {MaterialModule} from "@angular/material";
 
 describe('SubmitReportComponent', () => {
   let pageObject: SubmitReportPageObject;
@@ -25,7 +26,7 @@ describe('SubmitReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, MaterialModule.forRoot()],
       declarations: [SubmitReportComponent],
       providers: [{
         provide: Contract, useValue: contractSpy
@@ -79,7 +80,7 @@ describe('SubmitReportComponent', () => {
     pageObject.insertReportContent('my report');
 
     pageObject.clickSubmitReport();
-    tick();
+    tick(1000);
 
     expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
     expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report');
@@ -89,7 +90,7 @@ describe('SubmitReportComponent', () => {
     pageObject.insertReportContent('my report');
 
     pageObject.clickSubmitReport();
-    tick();
+    tick(1000);
 
     expect(routerSpy.navigate).toHaveBeenCalledWith(['reports']);
   }));
