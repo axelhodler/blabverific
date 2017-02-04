@@ -7,7 +7,7 @@ export class Contract {
   }
 
   submitReport(hash: string) {
-    return this.verify(hash);
+    return this.submit(hash);
   }
 
   verifyReport(hash: string) {
@@ -20,6 +20,14 @@ export class Contract {
 
   fetchVerifierAmount(hash: string) {
     return this.ethereumGateway.contract.verifiersFor.call(hash);
+  }
+
+  private submit(hash: string) {
+    return new Promise((resolve) => {
+      this.ethereumGateway.contract.submit(hash, {
+        from: this.ethereumGateway.currentUserAddress()
+      }, () => resolve())
+    })
   }
 
   private verify(hash: string) {
