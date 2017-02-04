@@ -6,6 +6,7 @@ import {Contract} from "../../boundaries/contract";
 import {By} from "@angular/platform-browser";
 import {FormsModule} from "@angular/forms";
 import {VerifyReportComponentPageObject} from "./verifyreport.component.pageobject";
+import {MaterialModule} from "@angular/material";
 
 describe('VerifyReport', () => {
   let comp: VerifyReport;
@@ -22,7 +23,7 @@ describe('VerifyReport', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule],
+      imports: [FormsModule, MaterialModule.forRoot()],
       declarations: [VerifyReport],
       providers: [{provide: Contract, useValue: contractMock}]
     })

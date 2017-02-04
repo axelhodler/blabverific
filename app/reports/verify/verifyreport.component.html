@@ -1,14 +1,23 @@
-<input id="report-id"
-       placeholder="Hash of the report"
-       [(ngModel)]="reportId">
+<md-input-container>
+  <input id="report-id"
+         md-input
+         placeholder="Hash of the report"
+         [(ngModel)]="reportId">
+</md-input-container>
+
 <button id="find-report"
+        md-button
         [disabled]="!reportId"
-        (click)="isReportValid()">Find Report
+        (click)="isReportValid()">Check validity
 </button>
-<button id="verify-report"
+
+<button md-raised-button
+        color="primary"
+        id="verify-report"
         [disabled]="!reportId"
         (click)="verifyReport()">Verify Report
 </button>
+
 <div id="is-report-valid">
   {{ isReportValidText }}
 </div>
