@@ -2,14 +2,9 @@
   <input id="report-id"
          mdInput
          placeholder="Hash of the report"
+         (keyup)="isReportValid()"
          [(ngModel)]="reportId">
 </md-input-container>
-
-<button id="find-report"
-        md-button
-        [disabled]="!reportId"
-        (click)="isReportValid()">Check validity
-</button>
 
 <button md-raised-button
         color="primary"

@@ -7,8 +7,6 @@ export class VerifyReportComponentPageObject {
   }
 
   clickFindReport() {
-    this.contents.debugElement.query(By.css('#find-report')).nativeElement.click();
-    this.contents.detectChanges();
   }
 
   isReportValidTextContent() {
@@ -20,9 +18,10 @@ export class VerifyReportComponentPageObject {
   }
 
   enterReportId(hash: string) {
-    var reportIdInput = this.contents.debugElement.query(By.css('#report-id')).nativeElement;
-    reportIdInput.value = 'reportId';
-    reportIdInput.dispatchEvent(new Event('input'));
+    var reportIdInput = this.contents.debugElement.query(By.css('#report-id'));
+    reportIdInput.nativeElement.value = 'reportId';
+    reportIdInput.nativeElement.dispatchEvent(new Event('input'));
+    reportIdInput.triggerEventHandler('keyup', null);
     this.contents.detectChanges();
   }
 }

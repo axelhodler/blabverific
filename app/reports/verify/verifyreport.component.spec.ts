@@ -51,19 +51,17 @@ describe('VerifyReport', () => {
 
   it('can find reports by id', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve());
-    pageObject.enterReportId('reportId');
 
-    pageObject.clickFindReport();
+    pageObject.enterReportId('reportId');
 
     expect(contractMock.isReportValid).toHaveBeenCalledWith('reportId');
   });
 
   it('displays if checked report is valid', fakeAsync(() => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve(true));
-    pageObject.enterReportId('reportId');
 
-    pageObject.clickFindReport();
-    tick(1000);
+    pageObject.enterReportId('reportId');
+    tick();
     fixture.detectChanges();
 
     expect(pageObject.isReportValidTextContent()).toBe('is valid!');
@@ -71,25 +69,22 @@ describe('VerifyReport', () => {
 
   it('displays if checked report is invalid', fakeAsync(() => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve(false));
-    pageObject.enterReportId('reportId');
 
-    pageObject.clickFindReport();
-    tick(1000);
+    pageObject.enterReportId('reportId');
+    tick();
     fixture.detectChanges();
 
     expect(pageObject.isReportValidTextContent()).toBe('not valid or not found!');
   }));
 
-  it('does not allow to click verify-report or find-report if no id is entered', () => {
+  it('does not allow to click verify-report if no id is entered', () => {
     expect(fixture.debugElement.query(By.css('#verify-report')).nativeElement.getAttribute('disabled')).toBe('');
-    expect(fixture.debugElement.query(By.css('#find-report')).nativeElement.getAttribute('disabled')).toBe('');
   });
 
   it('displays the verifiers for a specified report', fakeAsync(() => {
     spyOn(contractMock, 'fetchVerifiers').and.returnValue(Promise.resolve(['firstAddress']));
-    pageObject.enterReportId('reportId');
 
-    pageObject.clickFindReport();
+    pageObject.enterReportId('reportId');
     tick(1000);
     fixture.detectChanges();
 
