@@ -22,6 +22,7 @@
   {{ isReportValidText }}
 </div>
 
-<md-list id="report-verifiers">
-  <md-list-item>{{ reportVerifiers }}</md-list-item>
+<md-list *ngFor="let verifier of reportVerifiers"
+         id="report-verifiers">
+  <md-list-item>{{ verifier }}</md-list-item>
 </md-list>
