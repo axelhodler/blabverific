@@ -16,12 +16,16 @@ export class Contract {
 
   isReportValid(hash: string) {
     return new Promise((resolve) => {
-      this.ethereumGateway.contract.isValid.call(hash, (err: any, data: Boolean) => resolve(data));
+      this.ethereumGateway.contract.isValid
+        .call(hash, (err: any, data: number) => resolve(data));
     })
   }
 
   fetchVerifierAmount(hash: string) {
-    return this.ethereumGateway.contract.verifiersFor.call(hash);
+    return new Promise((resolve) => {
+      this.ethereumGateway.contract.verifiersFor
+        .call(hash, (err: any, data: number) => resolve(data));
+    })
   }
 
   private submit(hash: string) {

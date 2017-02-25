@@ -19,7 +19,7 @@ export class MockContract {
   }
 
   fetchVerifierAmount(hash: string) {
-    return 0;
+    return Promise.resolve(0);
   }
 
   private verify(hash: string) {

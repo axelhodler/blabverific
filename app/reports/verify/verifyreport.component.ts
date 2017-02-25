@@ -28,6 +28,8 @@ export class VerifyReport {
         this.isReportValidText = 'not valid or not found!';
       }
     });
-    this.reportVerifierAmount = this.contract.fetchVerifierAmount(this.reportId);
+    this.contract.fetchVerifierAmount(this.reportId).then((amount: number) => {
+      this.reportVerifierAmount = amount;
+    });
   }
 }

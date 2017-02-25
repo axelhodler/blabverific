@@ -19,6 +19,7 @@ describe('VerifyReport', () => {
       return Promise.resolve();
     },
     fetchVerifierAmount() {
+      return Promise.resolve();
     }
   };
 
@@ -84,21 +85,25 @@ describe('VerifyReport', () => {
     expect(fixture.debugElement.query(By.css('#find-report')).nativeElement.getAttribute('disabled')).toBe('');
   });
 
-  it('displays the amount of verifiers for a specified report', () => {
-    spyOn(contractMock, 'fetchVerifierAmount').and.returnValue(2);
+  it('displays the amount of verifiers for a specified report', fakeAsync(() => {
+    spyOn(contractMock, 'fetchVerifierAmount').and.returnValue(Promise.resolve(2));
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
+    tick(1000);
+    fixture.detectChanges();
 
     expect(pageObject.reportsVerifierTextContent()).toBe('2');
-  });
+  }));
 
-  it('displays the amount of verifiers for a specified report', () => {
-    spyOn(contractMock, 'fetchVerifierAmount').and.returnValue(3);
+  it('displays the amount of verifiers for a specified report', fakeAsync(() => {
+    spyOn(contractMock, 'fetchVerifierAmount').and.returnValue(Promise.resolve(3));
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
+    tick(1000);
+    fixture.detectChanges();
 
     expect(pageObject.reportsVerifierTextContent()).toBe('3');
-  });
+  }));
 });
