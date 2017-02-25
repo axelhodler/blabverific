@@ -24,7 +24,7 @@ export class Contract {
   fetchVerifiers(hash: string) {
     return new Promise((resolve) => {
       this.ethereumGateway.contract.verifiersFor
-        .call(hash, (err: any, data: string) => resolve(data));
+        .call(hash, (err: any, data: Array<string>) => resolve(data));
     })
   }
 

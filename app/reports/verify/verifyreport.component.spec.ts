@@ -86,7 +86,7 @@ describe('VerifyReport', () => {
   });
 
   it('displays the verifiers for a specified report', fakeAsync(() => {
-    spyOn(contractMock, 'fetchVerifiers').and.returnValue(Promise.resolve('firstAddress'));
+    spyOn(contractMock, 'fetchVerifiers').and.returnValue(Promise.resolve(['firstAddress']));
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();

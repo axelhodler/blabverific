@@ -11,7 +11,7 @@ export class VerifyReport {
   @Input()
   reportId: string;
   isReportValidText: string;
-  reportVerifiers: string;
+  reportVerifiers: Array<string>;
 
   constructor(private contract: Contract) {
   }
@@ -28,7 +28,7 @@ export class VerifyReport {
         this.isReportValidText = 'not valid or not found!';
       }
     });
-    this.contract.fetchVerifiers(this.reportId).then((verifiers: string) => {
+    this.contract.fetchVerifiers(this.reportId).then((verifiers: Array<string>) => {
       this.reportVerifiers = verifiers;
     });
   }
