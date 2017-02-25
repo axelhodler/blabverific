@@ -21,11 +21,13 @@ export class VerifyReport {
   }
 
   isReportValid() {
-    if (this.contract.isReportValid(this.reportId)) {
-      this.isReportValidText = 'is valid!';
-    } else {
-      this.isReportValidText = 'not valid or not found!';
-    }
+    this.contract.isReportValid(this.reportId).then(isValid => {
+      if (isValid) {
+        this.isReportValidText = 'is valid!';
+      } else {
+        this.isReportValidText = 'not valid or not found!';
+      }
+    });
     this.reportVerifierAmount = this.contract.fetchVerifierAmount(this.reportId);
   }
 }

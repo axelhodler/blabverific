@@ -15,7 +15,9 @@ export class Contract {
   }
 
   isReportValid(hash: string) {
-    return this.ethereumGateway.contract.isValid.call(hash);
+    return new Promise((resolve) => {
+      this.ethereumGateway.contract.isValid.call(hash, (err: any, data: Boolean) => resolve(data));
+    })
   }
 
   fetchVerifierAmount(hash: string) {

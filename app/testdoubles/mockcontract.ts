@@ -15,7 +15,7 @@ export class MockContract {
   }
 
   isReportValid(hash: string) {
-    return false;
+    return Promise.resolve(false);
   }
 
   fetchVerifierAmount(hash: string) {

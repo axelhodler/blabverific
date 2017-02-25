@@ -1,5 +1,5 @@
 import {
-  async, TestBed, ComponentFixture
+  async, TestBed, ComponentFixture, fakeAsync, tick
 } from '@angular/core/testing';
 import {VerifyReport} from "./verifyreport.component";
 import {Contract} from "../../boundaries/contract";
@@ -16,6 +16,7 @@ describe('VerifyReport', () => {
     verifyReport() {
     },
     isReportValid() {
+      return Promise.resolve();
     },
     fetchVerifierAmount() {
     }
@@ -48,7 +49,7 @@ describe('VerifyReport', () => {
   });
 
   it('can find reports by id', () => {
-    spyOn(contractMock, 'isReportValid');
+    spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve());
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
@@ -56,23 +57,27 @@ describe('VerifyReport', () => {
     expect(contractMock.isReportValid).toHaveBeenCalledWith('reportId');
   });
 
-  it('displays if checked report is valid', () => {
-    spyOn(contractMock, 'isReportValid').and.returnValue(true);
+  it('displays if checked report is valid', fakeAsync(() => {
+    spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve(true));
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
+    tick(1000);
+    fixture.detectChanges();
 
     expect(pageObject.isReportValidTextContent()).toBe('is valid!');
-  });
+  }));
 
-  it('displays if checked report is invalid', () => {
-    spyOn(contractMock, 'isReportValid').and.returnValue(false);
+  it('displays if checked report is invalid', fakeAsync(() => {
+    spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve(false));
     pageObject.enterReportId('reportId');
 
     pageObject.clickFindReport();
+    tick(1000);
+    fixture.detectChanges();
 
     expect(pageObject.isReportValidTextContent()).toBe('not valid or not found!');
-  });
+  }));
 
   it('does not allow to click verify-report or find-report if no id is entered', () => {
     expect(fixture.debugElement.query(By.css('#verify-report')).nativeElement.getAttribute('disabled')).toBe('');
