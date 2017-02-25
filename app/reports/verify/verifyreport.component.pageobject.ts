@@ -16,7 +16,7 @@ export class VerifyReportComponentPageObject {
   }
 
   reportsVerifierTextContent() {
-    return this.contents.debugElement.query(By.css('#report-verifier-amount')).nativeElement.textContent.trim();
+    return this.contents.debugElement.query(By.css('#report-verifiers')).nativeElement.textContent.trim();
   }
 
   enterReportId(hash: string) {

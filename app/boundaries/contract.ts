@@ -21,10 +21,10 @@ export class Contract {
     })
   }
 
-  fetchVerifierAmount(hash: string) {
+  fetchVerifiers(hash: string) {
     return new Promise((resolve) => {
       this.ethereumGateway.contract.verifiersFor
-        .call(hash, (err: any, data: number) => resolve(data));
+        .call(hash, (err: any, data: string) => resolve(data));
     })
   }
 

@@ -18,7 +18,7 @@ export class MockContract {
     return Promise.resolve(false);
   }
 
-  fetchVerifierAmount(hash: string) {
+  fetchVerifiers(hash: string) {
     return Promise.resolve(0);
   }
 
