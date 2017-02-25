@@ -15,6 +15,6 @@ describe('Blabverific E2E Tests', () => {
   it('can enter the reports route via link', () => {
     element(by.id('navbar-to-reports')).click();
 
-    expect(element(by.id('reports-list-heading')).isPresent()).toBeTruthy();
+    expect(element(by.id('reports-list')).isPresent()).toBeTruthy();
   })
 });
