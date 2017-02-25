@@ -26,7 +26,7 @@ describe('SubmitReportComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, MaterialModule.forRoot()],
+      imports: [FormsModule, MaterialModule],
       declarations: [SubmitReportComponent],
       providers: [{
         provide: Contract, useValue: contractSpy

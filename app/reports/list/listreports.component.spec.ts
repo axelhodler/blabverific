@@ -12,7 +12,7 @@ describe('ListReportsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [MaterialModule.forRoot()],
+      imports: [MaterialModule],
       declarations: [ListReportsComponent],
       providers: [{provide: ReportsGateway, useClass: MockReportsGateway}]
     })

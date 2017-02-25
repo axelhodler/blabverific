@@ -27,7 +27,7 @@ describe('AppComponent', () =>{
   beforeEach(async(() => {
     spyOn(ethereumGatewaySpy, 'connectToContract').and.throwError('');
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpModule, AppRoutingModule, RouterTestingModule, MaterialModule.forRoot()],
+      imports: [FormsModule, HttpModule, AppRoutingModule, RouterTestingModule, MaterialModule],
       declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
       providers: [Config, {provide: EthereumGateway, useValue: ethereumGatewaySpy}, Contract, ReportsGateway]
     })

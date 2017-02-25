@@ -14,12 +14,12 @@ import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
 import {MockContract} from "./testdoubles/mockcontract";
 import {Contract} from "./boundaries/contract";
-import { MaterialModule } from '@angular/material';
+import {MaterialModule} from "@angular/material";
 import {Hashing} from "./boundaries/hashing";
 
 @NgModule({
   imports: [
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserModule,
     FormsModule,
     HttpModule,

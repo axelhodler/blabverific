@@ -25,7 +25,7 @@ describe('VerifyReport', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, MaterialModule.forRoot()],
+      imports: [FormsModule, MaterialModule],
       declarations: [VerifyReport],
       providers: [{provide: Contract, useValue: contractMock}]
     })
