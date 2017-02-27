@@ -1,5 +1,5 @@
 <p id="report-hashed">{{reportHash}}</p>
-<md-input-container>
+<md-input-container style="width: 100%;">
   <input id="report-content"
          mdInput
          placeholder="Describe what you did"
@@ -8,6 +8,7 @@
 </md-input-container>
 
 <button md-raised-button
+        style="float: right;"
         color="primary"
         id="submit-report"
         [disabled]="!report"
