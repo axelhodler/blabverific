@@ -1,6 +1,6 @@
 <p></p>
 
-<md-input-container>
+<md-input-container class="full-width">
   <input id="report-id"
          mdInput
          placeholder="Hash of the report"
@@ -9,6 +9,7 @@
 </md-input-container>
 
 <button md-raised-button
+        class="pull-right"
         color="primary"
         id="verify-report"
         [disabled]="!reportId"

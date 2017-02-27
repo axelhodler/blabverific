@@ -1,14 +1,14 @@
 <p id="report-hashed">{{reportHash}}</p>
-<md-input-container style="width: 100%;">
+<md-input-container class="full-width">
   <input id="report-content"
          mdInput
-         placeholder="Describe what you did"
+         placeholder="Describe what you have achieved"
          [(ngModel)]="report"
          (ngModelChange)="updateReportHash()">
 </md-input-container>
 
 <button md-raised-button
-        style="float: right;"
+        class="pull-right"
         color="primary"
         id="submit-report"
         [disabled]="!report"
