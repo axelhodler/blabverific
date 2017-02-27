@@ -1,4 +1,5 @@
-<p id="report-hashed">{{reportHash}}</p>
+<p></p>
+
 <md-input-container class="full-width">
   <input id="report-content"
          mdInput
@@ -6,6 +7,12 @@
          [(ngModel)]="report"
          (ngModelChange)="updateReportHash()">
 </md-input-container>
+
+<p id="report-hashed"
+   style="float: left;"
+   [hidden]="!reportHash">
+  Your report has the unique hash of <i>{{reportHash}}</i> and will be stored as such
+</p>
 
 <button md-raised-button
         class="pull-right"

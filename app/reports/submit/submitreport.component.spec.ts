@@ -55,7 +55,7 @@ describe('SubmitReportComponent', () => {
   it('displays the hashed report', () => {
     pageObject.insertReportContent('another report');
 
-    expect(pageObject.hashedReport()).toBe('0x5917c10d9344319535b34bb5b24b1df303f6fdd691c74ea5f0f66cb1f19f07af');
+    expect(pageObject.hashedReport()).toContain('0x5917c10d9344319535b34bb5b24b1df303f6fdd691c74ea5f0f66cb1f19f07af');
   });
 
   it('does not display submit button as enabled if nothing is entered', () => {
