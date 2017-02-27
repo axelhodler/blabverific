@@ -18,4 +18,5 @@ if [ "$1" == "e2e" ]; then
 else
   trap "git checkout app/config.ts" SIGINT
   npm run run
+  docker ps | tail -n 1 | awk '{print $1}' | xargs docker kill | > /dev/null
 fi
