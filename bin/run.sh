@@ -13,7 +13,7 @@ sed -i '' 's#_CONTRACT_ABI_#'$ABI'#g' app/config.ts
 
 if [ "$1" == "e2e" ]; then
   tsc && concurrently "lite-server -c configs/e2e-bs-config.js" "./node_modules/protractor/bin/protractor protractor.config.js" --kill-others --success first
-  lsof -i:8545 | grep node | awk '{print $2}' | xargs kill
+  docker ps | tail -n 1 | awk '{print $1}' | xargs docker kill
   git checkout app/config.ts
 else
   trap "git checkout app/config.ts" SIGINT
