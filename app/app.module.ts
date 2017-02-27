@@ -12,7 +12,6 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HttpModule} from "@angular/http";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {InMemoryDataService} from "./in-memory-data.service";
-import {MockContract} from "./testdoubles/mockcontract";
 import {Contract} from "./boundaries/contract";
 import {MaterialModule} from "@angular/material";
 import {Hashing} from "./boundaries/hashing";
@@ -28,7 +27,7 @@ import {Hashing} from "./boundaries/hashing";
   ],
   declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, {provide: Contract, useClass: MockContract}, Config, ReportsGateway, Hashing]
+  providers: [EthereumGateway, Contract, Config, ReportsGateway, Hashing]
 })
 export class AppModule {
 }
