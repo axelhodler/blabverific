@@ -74,7 +74,7 @@ describe('VerifyReport', () => {
     tick();
     fixture.detectChanges();
 
-    expect(pageObject.isReportValidTextContent()).toBe('not valid or not found!');
+    expect(pageObject.isReportValidTextContent()).toContain('not yet valid');
   }));
 
   it('does not allow to click verify-report if no id is entered', () => {

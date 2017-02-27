@@ -25,7 +25,7 @@ export class VerifyReport {
       if (isValid) {
         this.isReportValidText = 'is valid!';
       } else {
-        this.isReportValidText = 'not valid or not found!';
+        this.isReportValidText = 'The report you are searching for is not yet valid!';
       }
     });
     this.contract.fetchVerifiers(this.reportId).then((verifiers: Array<string>) => {
