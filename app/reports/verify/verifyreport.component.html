@@ -21,7 +21,7 @@
   {{ isReportValidText }}
 </div>
 
-<p [hidden]="!reportVerifiers && reportVerifiers.length ===0"> The following users have verified the report:</p>
+<p [hidden]="!reportVerifiers"> The following users have verified the report:</p>
 <md-list *ngFor="let verifier of reportVerifiers"
          id="report-verifiers">
   <md-list-item>{{ verifier }}</md-list-item>
