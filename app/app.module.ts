@@ -15,6 +15,8 @@ import {InMemoryDataService} from "./in-memory-data.service";
 import {Contract} from "./boundaries/contract";
 import {MaterialModule} from "@angular/material";
 import {Hashing} from "./boundaries/hashing";
+import {ListMembersComponent} from "./members/list/listmembers.component";
+import {MembersGateway} from "./boundaries/membersgateway";
 
 @NgModule({
   imports: [
@@ -25,9 +27,9 @@ import {Hashing} from "./boundaries/hashing";
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],
-  declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent],
+  declarations: [AppComponent, SubmitReportComponent, VerifyReport, ListReportsComponent, ListMembersComponent],
   bootstrap: [AppComponent],
-  providers: [EthereumGateway, Contract, Config, ReportsGateway, Hashing]
+  providers: [EthereumGateway, Contract, Config, ReportsGateway, MembersGateway, Hashing]
 })
 export class AppModule {
 }
