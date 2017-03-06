@@ -3,6 +3,7 @@ import {Hashing} from "../../boundaries/hashing";
 import {Contract} from "../../boundaries/contract";
 import {ReportsGateway} from "../../boundaries/reportsgateway";
 import {Router} from "@angular/router";
+import {Report} from "../report";
 
 @Component({
   moduleId: module.id,
@@ -11,9 +12,7 @@ import {Router} from "@angular/router";
 })
 export class SubmitReportComponent {
   @Input()
-  report: string;
-  @Input()
-  reportCompensation: number;
+  report: Report;
 
   reportHash: string;
 
@@ -21,15 +20,16 @@ export class SubmitReportComponent {
 
   constructor(private router: Router, private contract: Contract, private reportsGateway: ReportsGateway) {
     this.hashing = new Hashing();
+    this.report = new Report();
   }
 
   updateReportHash() {
-    this.reportHash = this.hashing.sha3(this.report);
+    this.reportHash = this.hashing.sha3(this.report.content);
   }
 
   submitReport() {
-    return this.contract.submitReport(this.reportHash, this.reportCompensation).then(() => {
-      return this.reportsGateway.saveReport(this.report, this.reportCompensation).then(() => {
+    return this.contract.submitReport(this.reportHash, this.report.compensation).then(() => {
+      return this.reportsGateway.saveReport(this.report.content, this.report.compensation).then(() => {
         return this.router.navigate(['reports']);
       });
     });

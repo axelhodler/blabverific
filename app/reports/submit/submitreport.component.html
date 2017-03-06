@@ -4,14 +4,14 @@
   <input id="report-content"
          mdInput
          placeholder="Describe what you have achieved"
-         [(ngModel)]="report"
+         [(ngModel)]="report.content"
          (ngModelChange)="updateReportHash()">
 </md-input-container>
 
 <input id="report-compensation"
        mdInput
        type="number"
-       [(ngModel)]="reportCompensation"
+       [(ngModel)]="report.compensation"
        placeholder="What compensation do you accept">
 
 <p id="report-hashed"
@@ -24,7 +24,7 @@
         class="pull-right"
         color="primary"
         id="submit-report"
-        [disabled]="!report"
+        [disabled]="!report.content"
         (click)="submitReport()">
   Submit Report
 </button>
