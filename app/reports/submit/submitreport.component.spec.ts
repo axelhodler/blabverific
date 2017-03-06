@@ -73,7 +73,7 @@ describe('SubmitReportComponent', () => {
 
     pageObject.clickSubmitReport();
 
-    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
+    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc', 200);
   });
 
   it('stores the report after submitting to the contract', fakeAsync(() => {
@@ -82,8 +82,8 @@ describe('SubmitReportComponent', () => {
     pageObject.clickSubmitReport();
     tick(1000);
 
-    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc');
-    expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report');
+    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc', 200);
+    expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report', 200);
   }));
 
   it('navigates to reports overview after creating one', fakeAsync(() => {
@@ -101,5 +101,8 @@ describe('SubmitReportComponent', () => {
 
     pageObject.clickSubmitReport();
     tick(1000);
+
+    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc', 200);
+    expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report', 200);
   }))
 });

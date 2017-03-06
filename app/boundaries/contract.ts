@@ -6,8 +6,8 @@ export class Contract {
   constructor(private ethereumGateway: EthereumGateway) {
   }
 
-  submitReport(hash: string) {
-    return this.submit(hash);
+  submitReport(hash: string, compensation: 200) {
+    return this.submit(hash, compensation);
   }
 
   verifyReport(hash: string) {
@@ -28,9 +28,9 @@ export class Contract {
     })
   }
 
-  private submit(hash: string) {
+  private submit(hash: string, compensation: number) {
     return new Promise((resolve) => {
-      this.ethereumGateway.contract.submit(hash, {
+      this.ethereumGateway.contract.submit(hash, compensation, {
         from: this.ethereumGateway.currentUserAddress()
       }, () => resolve())
     })

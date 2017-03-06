@@ -12,7 +12,7 @@ export class ReportsGateway {
   constructor(private http: Http, private hashing: Hashing) {
   }
 
-  saveReport(content: string): Promise<Report> {
+  saveReport(content: string, compensation: number): Promise<Report> {
     return this.http.post(this.REPORTS_URL, JSON.stringify({
       id: this.hashing.sha3(content),
       content: content,
