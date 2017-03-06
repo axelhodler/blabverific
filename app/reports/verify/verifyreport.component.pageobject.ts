@@ -6,9 +6,6 @@ export class VerifyReportComponentPageObject {
   constructor(private contents: ComponentFixture<VerifyReport>) {
   }
 
-  clickFindReport() {
-  }
-
   isReportValidTextContent() {
     return this.contents.debugElement.query(By.css('#is-report-valid')).nativeElement.textContent.trim();
   }
