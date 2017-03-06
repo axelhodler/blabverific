@@ -94,4 +94,12 @@ describe('SubmitReportComponent', () => {
 
     expect(routerSpy.navigate).toHaveBeenCalledWith(['reports']);
   }));
+
+  it('allows user to enter the amount of compensation they expect', fakeAsync(() => {
+    pageObject.insertReportContent('my report');
+    pageObject.insertReportCompensation(200);
+
+    pageObject.clickSubmitReport();
+    tick(1000);
+  }))
 });

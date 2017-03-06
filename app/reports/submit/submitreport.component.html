@@ -8,6 +8,11 @@
          (ngModelChange)="updateReportHash()">
 </md-input-container>
 
+<input id="report-compensation"
+       mdInput
+       type="number"
+       placeholder="What compensation do you accept">
+
 <p id="report-hashed"
    style="float: left;"
    [hidden]="!reportHash">
