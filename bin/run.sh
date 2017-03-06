@@ -1,7 +1,7 @@
 #!/bin/sh
 
 cd contract
-CONFIG_CONTENTS=`./bin/prepare_contract.sh`
+CONFIG_CONTENTS=`./scripts/prepare_contract.sh`
 CONFIG_CONTENTS_ARRAY=($CONFIG_CONTENTS)
 cd ..
 
