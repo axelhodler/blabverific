@@ -27,7 +27,7 @@ export class SubmitReportPageObject {
 
   insertReportCompensation(compensation: number) {
     this.reportCompensation().value = compensation;
-    this.reportContent().dispatchEvent(new Event('input'));
+    this.reportCompensation().dispatchEvent(new Event('input'));
     this.contents.detectChanges();
   }
 

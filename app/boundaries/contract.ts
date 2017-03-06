@@ -6,7 +6,7 @@ export class Contract {
   constructor(private ethereumGateway: EthereumGateway) {
   }
 
-  submitReport(hash: string, compensation: 200) {
+  submitReport(hash: string, compensation: number) {
     return this.submit(hash, compensation);
   }
 

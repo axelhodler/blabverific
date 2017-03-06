@@ -70,6 +70,7 @@ describe('SubmitReportComponent', () => {
 
   it('submits the hash of the entered report', () => {
     pageObject.insertReportContent('my report');
+    pageObject.insertReportCompensation(200);
 
     pageObject.clickSubmitReport();
 
@@ -78,11 +79,11 @@ describe('SubmitReportComponent', () => {
 
   it('stores the report after submitting to the contract', fakeAsync(() => {
     pageObject.insertReportContent('my report');
+    pageObject.insertReportCompensation(200);
 
     pageObject.clickSubmitReport();
     tick(1000);
 
-    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc', 200);
     expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report', 200);
   }));
 
@@ -97,12 +98,12 @@ describe('SubmitReportComponent', () => {
 
   it('allows user to enter the amount of compensation they expect', fakeAsync(() => {
     pageObject.insertReportContent('my report');
-    pageObject.insertReportCompensation(200);
+    pageObject.insertReportCompensation(150);
 
     pageObject.clickSubmitReport();
     tick(1000);
 
-    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc', 200);
-    expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report', 200);
+    expect(contractSpy.submitReport).toHaveBeenCalledWith('0xd2a1ba85429ae235e1572871497ae0d0e499c696cb44d33f88c2a26820e4f7cc', 150);
+    expect(reportsGatewaySpy.saveReport).toHaveBeenCalledWith('my report', 150);
   }))
 });

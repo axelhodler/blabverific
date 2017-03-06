@@ -12,6 +12,8 @@ import {Router} from "@angular/router";
 export class SubmitReportComponent {
   @Input()
   report: string;
+  @Input()
+  reportCompensation: number;
 
   reportHash: string;
 
@@ -26,8 +28,8 @@ export class SubmitReportComponent {
   }
 
   submitReport() {
-    return this.contract.submitReport(this.reportHash, 200).then(() => {
-      return this.reportsGateway.saveReport(this.report, 200).then(() => {
+    return this.contract.submitReport(this.reportHash, this.reportCompensation).then(() => {
+      return this.reportsGateway.saveReport(this.report, this.reportCompensation).then(() => {
         return this.router.navigate(['reports']);
       });
     });
