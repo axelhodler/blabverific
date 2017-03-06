@@ -16,6 +16,7 @@ export class ReportsGateway {
     return this.http.post(this.REPORTS_URL, JSON.stringify({
       id: this.hashing.sha3(content),
       content: content,
+      compensation: compensation,
       submitter: 'Carol the current user',
       verifierCount: 0
     }), {headers: this.HEADERS})
