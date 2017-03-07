@@ -14,11 +14,12 @@ export class VerifyReportComponentPageObject {
     return this.contents.debugElement.query(By.css('#report-verifiers')).nativeElement.textContent.trim();
   }
 
-  enterReportId(hash: string) {
+  enterReportId(hash: string, tick: Function) {
     var reportIdInput = this.contents.debugElement.query(By.css('#report-id'));
     reportIdInput.nativeElement.value = 'reportId';
     reportIdInput.nativeElement.dispatchEvent(new Event('input'));
     reportIdInput.triggerEventHandler('keyup', null);
+    tick();
     this.contents.detectChanges();
   }
 

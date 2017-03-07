@@ -42,7 +42,7 @@ describe('VerifyReport', () => {
   });
 
   it('verifies a report on clicking the verify report button', () => {
-    pageObject.enterReportId('reportId');
+    pageObject.enterReportId('reportId', () => {});
 
     fixture.debugElement.query(By.css('#verify-report')).nativeElement.click();
 
@@ -52,7 +52,7 @@ describe('VerifyReport', () => {
   it('can find reports by id', () => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve());
 
-    pageObject.enterReportId('reportId');
+    pageObject.enterReportId('reportId', () => {});
 
     expect(contractMock.isReportValid).toHaveBeenCalledWith('reportId');
   });
@@ -60,9 +60,7 @@ describe('VerifyReport', () => {
   it('displays if checked report is valid', fakeAsync(() => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve(true));
 
-    pageObject.enterReportId('reportId');
-    tick();
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId', tick);
 
     expect(pageObject.isReportValidTextContent()).toBe('is valid!');
   }));
@@ -70,9 +68,7 @@ describe('VerifyReport', () => {
   it('displays if checked report is invalid', fakeAsync(() => {
     spyOn(contractMock, 'isReportValid').and.returnValue(Promise.resolve(false));
 
-    pageObject.enterReportId('reportId');
-    tick();
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId', tick);
 
     expect(pageObject.isReportValidTextContent()).toContain('not yet valid');
   }));
@@ -84,9 +80,7 @@ describe('VerifyReport', () => {
   it('displays the verifiers for a specified report', fakeAsync(() => {
     spyOn(contractMock, 'fetchVerifiers').and.returnValue(Promise.resolve(['firstAddress']));
 
-    pageObject.enterReportId('reportId');
-    tick(1000);
-    fixture.detectChanges();
+    pageObject.enterReportId('reportId', tick);
 
     expect(pageObject.reportsVerifierTextContent()).toContain('firstAddress');
   }));
@@ -94,7 +88,7 @@ describe('VerifyReport', () => {
   it('updates the verifiers after adding a new verification', fakeAsync(() => {
     spyOn(contractMock, 'fetchVerifiers')
       .and.returnValues(Promise.resolve(['firstAddress']), Promise.resolve(['firstAddress', 'secondAddress']));
-    pageObject.enterReportId('reportId');
+    pageObject.enterReportId('reportId', tick);
 
     pageObject.clickVerifyButton(tick);
 
