@@ -1,5 +1,6 @@
 <md-list id="members-list">
   <md-list-item *ngFor="let member of members">
-    {{ member }}
+    <h3 md-line> {{ member.name }} </h3>
+    <p md-line> {{ member.id }} </p>
   </md-list-item>
 </md-list>
