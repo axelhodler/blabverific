@@ -21,4 +21,10 @@ export class VerifyReportComponentPageObject {
     reportIdInput.triggerEventHandler('keyup', null);
     this.contents.detectChanges();
   }
+
+  clickVerifyButton(tick: Function) {
+    this.contents.debugElement.query(By.css('#verify-report')).nativeElement.click()
+    tick();
+    this.contents.detectChanges();
+  }
 }

@@ -22,7 +22,8 @@
 </div>
 
 <p [hidden]="!reportVerifiers"> The following users have verified the report:</p>
-<md-list *ngFor="let verifier of reportVerifiers"
-         id="report-verifiers">
-  <md-list-item>{{ verifier }}</md-list-item>
+<md-list id="report-verifiers">
+  <md-list-item *ngFor="let verifier of reportVerifiers">
+    {{ verifier }}
+  </md-list-item>
 </md-list>

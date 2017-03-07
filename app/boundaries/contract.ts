@@ -11,7 +11,7 @@ export class Contract {
   }
 
   verifyReport(hash: string) {
-    this.verify(hash);
+    return this.verify(hash);
   }
 
   isReportValid(hash: string) {

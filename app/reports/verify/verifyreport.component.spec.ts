@@ -37,7 +37,7 @@ describe('VerifyReport', () => {
     pageObject = new VerifyReportComponentPageObject(fixture);
     comp = fixture.componentInstance;
     contractMock = TestBed.get(Contract);
-    spyOn(contractMock, 'verifyReport');
+    spyOn(contractMock, 'verifyReport').and.returnValue(Promise.resolve());
     fixture.detectChanges();
   });
 
@@ -89,5 +89,16 @@ describe('VerifyReport', () => {
     fixture.detectChanges();
 
     expect(pageObject.reportsVerifierTextContent()).toContain('firstAddress');
+  }));
+
+  it('updates the verifiers after adding a new verification', fakeAsync(() => {
+    spyOn(contractMock, 'fetchVerifiers')
+      .and.returnValues(Promise.resolve(['firstAddress']), Promise.resolve(['firstAddress', 'secondAddress']));
+    pageObject.enterReportId('reportId');
+
+    pageObject.clickVerifyButton(tick);
+
+    expect(pageObject.reportsVerifierTextContent()).toContain('firstAddress');
+    expect(pageObject.reportsVerifierTextContent()).toContain('secondAddress');
   }));
 });

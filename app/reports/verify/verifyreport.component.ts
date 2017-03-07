@@ -17,7 +17,11 @@ export class VerifyReport {
   }
 
   verifyReport() {
-    this.contract.verifyReport(this.reportId);
+    this.contract.verifyReport(this.reportId).then(() => {
+      this.contract.fetchVerifiers(this.reportId).then((verifiers: Array<string>) => {
+        this.reportVerifiers = verifiers;
+      })
+    });
   }
 
   isReportValid() {
