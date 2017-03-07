@@ -1,18 +1,11 @@
-<table id="reports-list">
-  <tr>
-    <td>Hash</td>
-    <td>Content</td>
-    <td>Submitter</td>
-    <td>Verifier Count</td>
-    <td>Verify</td>
-  </tr>
-  <tr *ngFor="let report of reports">
-    <td>{{report.id}}</td>
-    <td>{{report.content}}</td>
-    <td>{{report.submitter}}</td>
-    <td>{{report.verifierCount}}</td>
+<md-list id="reports-list">
+  <md-list-item *ngFor="let report of reports">
+    <h3 md-line> {{ report.content }} </h3>
+    <i md-line> {{ report.id }} </i>
+    <p md-line class="membername"> {{ report.submitter }} </p>
+    <p md-line> Verifiercount: {{ report.verifierCount }} </p>
     <button md-mini-fab>
       <md-icon>check</md-icon>
     </button>
-  </tr>
-</table>
+  </md-list-item>
+</md-list>

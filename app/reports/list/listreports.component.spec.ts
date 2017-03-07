@@ -30,13 +30,12 @@ describe('ListReportsComponent', () => {
     fixture.detectChanges();
   });
 
-  it('displays the reporters name, report contents and its id', () => {
+  it('displays the reporters name', () => {
     let report = 'hashedreport report contents Sally the Submitter';
     let reportsList = pageObject.reportsList();
 
-    let rows = reportsList.firstElementChild.getElementsByTagName('tr');
+    let rows = reportsList.firstElementChild.getElementsByClassName('membername');
 
-    expect(rows[1].textContent).toContain('Sally the Submitter');
-    expect(rows[2].textContent).toContain('Sven the Submitter');
+    expect(rows[0].textContent).toContain('Sally the Submitter');
   });
 });
