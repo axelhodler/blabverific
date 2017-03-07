@@ -1,4 +1,5 @@
-<md-list *ngFor="let member of members"
-         id="members-list">
-  <md-list-item>{{ member }}</md-list-item>
+<md-list id="members-list">
+  <md-list-item *ngFor="let member of members">
+    {{ member }}
+  </md-list-item>
 </md-list>
